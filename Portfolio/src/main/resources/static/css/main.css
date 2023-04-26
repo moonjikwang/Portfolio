@@ -1,0 +1,376 @@
+.autocomplete-items {
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1;
+}
+.autocomplete-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .card-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .card {
+    width: 100%;
+  }
+}
+.autocomplete-item:hover {
+  background-color: #e9e9e9;
+}
+
+@font-face {
+    font-family: 'yg-jalnan';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+  input::-webkit-calendar-picker-indicator {
+    background-color : gray;
+    border-radius: 5px;
+  }
+.scrollBar::-webkit-scrollbar {
+    margin-top: 5px;
+    height: 5px;
+}
+
+.scrollBar::-webkit-scrollbar-thumb {
+    width: 10%; /* 스크롤바의 길이 */
+    background: #ca9ed1; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+
+.scrollBar::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+}
+body::-webkit-scrollbar {
+    height: 2px;
+    width: 4px;
+}
+
+body::-webkit-scrollbar-thumb {
+    width: 10%; /* 스크롤바의 길이 */
+    background: #ca9ed1; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
+::-moz-selection {
+   background: #000;
+   color: #fff;
+}
+::selection {
+   background: #ca9ed1;
+   color: #fff;
+}
+:root{
+	--bs-body-bg: #060b12; 
+	/* 기존색상 #111111 */
+}
+     .container{
+        max-width: 1320px;
+        font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+        font-weight: 400;
+      }
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+  
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+  
+        .b-example-divider {
+          height: 3rem;
+          background-color: rgba(0, 0, 0, .1);
+          border: solid rgba(0, 0, 0, .15);
+          border-width: 1px 0;
+          box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+  
+        .b-example-vr {
+          flex-shrink: 0;
+          width: 1.5rem;
+          height: 100vh;
+        }
+  
+        .bi {
+          vertical-align: -.125em;
+          fill: currentColor;
+        }
+      .textLine{
+        display:inline-block; 
+        height:48px;
+      }
+  
+        .nav-scroller {
+          position: relative;
+          z-index: 2;
+          height: 2.75rem;
+          overflow-y: hidden;
+        }
+  
+        .nav-scroller .nav {
+          display: flex;
+          flex-wrap: nowrap;
+          padding-bottom: 1rem;
+          margin-top: -1px;
+          overflow-x: auto;
+          text-align: center;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
+        }
+      .card-header{
+        border-radius: 40px 40px 0px 0px !important; 
+        border-bottom: 0px;
+        background-color: rgb(34,37,41,0);
+      }
+      .card-body{
+        padding-top: 0px;
+        text-align: left !important;
+      }
+      .card:hover{
+        transform: scale(1.02);
+        transition: 0.5s;
+      }
+
+        @media (min-width: 700px) {
+  .d-block {
+    width: 100%;
+  }
+  .carousel-text{
+    font-size: 50px;
+    text-align: left;
+    font-family: 'Raleway', sans-serif !important;
+  }
+  .mobilenav{
+    display: none !important;
+  }
+}
+              @media (max-width: 699px) {
+  .d-block {
+    height: 250px;
+  }
+  .carousel-text{
+    text-align: left;
+    font-size: 35px;
+    font-family: 'Raleway', sans-serif;
+  }
+}
+
+/* PConly */
+@media (max-width: 576px){
+	.nav-tabs a{
+	padding: 0px;
+	}
+	table #content2 img{
+		max-width: 100%;
+	}
+	.pconly{
+	display: none;
+	}
+	.mobileonly{
+	display: block;
+	}
+		.writeform{
+		max-width: 100%!important;
+		margin-left: 0px!important;
+		margin-right: 0px!important;
+	}
+	.carousel-caption {
+	bottom: 8rem!important;
+	left: 0%;
+	}
+}
+@media (min-width: 576px){
+	.writeform{
+		max-width: 80%;
+	}
+	.mobileonly{
+	display: none;
+	}
+	.pconly{
+	display:block;
+	}
+	.pc100{
+	width:100%;
+	}
+}
+@media(max-width: 768px){
+        .pcnav {
+            display: none !important;
+        }
+    }
+      .back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    display: none;
+}
+    #loading {
+
+width: 100%;
+height: 100%;
+top: 0;
+left: 0;
+position: fixed;
+display: block;
+opacity: 1;
+background: #060b12;
+z-index: 99;
+text-align: center;
+
+}
+.loading-text{
+position: absolute;
+top: calc(60% - 50px);
+  left: calc(50% - 50px);
+  width: 100px;
+  
+    perspective: 800px;
+}
+.loader {
+  position: absolute;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  perspective: 800px;
+  
+}
+
+.inner {
+  position: absolute;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;  
+}
+
+.inner.one {
+  left: 0%;
+  top: 0%;
+  animation: rotate-one 1s linear infinite;
+  border-bottom: 3px solid #ca9ed1;
+}
+
+.inner.two {
+  right: 0%;
+  top: 0%;
+  animation: rotate-two 1s linear infinite;
+  border-right: 3px solid #be73cb;
+}
+
+.inner.three {
+  right: 0%;
+  bottom: 0%;
+  animation: rotate-three 1s linear infinite;
+  border-top: 3px solid #ae45c1;
+}
+
+@keyframes rotate-one {
+  0% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-two {
+  0% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+  }
+}
+
+@keyframes rotate-three {
+  0% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+  }
+}
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+input {
+  /* display: none; */
+}
+
+label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  color: gray;
+  border: 1px solid transparent;
+}
+
+label:before {
+  font-family: fontawesome;
+  font-weight: normal;
+  margin-right: 10px;
+}
+
+label[for*='1']:before {
+  content: '\f1cb';
+}
+
+label[for*='2']:before {
+  content: '\f17d';
+}
+
+label[for*='3']:before {
+  content: '\f16b';
+}
+
+label[for*='4']:before {
+  content: '\f1a9';
+}
+
+label:hover {
+  color: white;
+  cursor: pointer;
+}
+
+input:checked + label {
+  color: white;
+  border-bottom: 2px solid #ca9ed1;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4 {
+  display: block;
+}
