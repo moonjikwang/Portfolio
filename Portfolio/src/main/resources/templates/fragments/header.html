@@ -20,7 +20,7 @@
 					style="padding-left: 10px; margin-top: 0px !important; font-family: 'Noto Sans KR', sans-serif;">
 					
 					<a class="me-3 py-2 text-white text-decoration-none" href="index#portFolioList" style="margin-right: 2rem!important">공개 포트폴리오</a> 
-					<a class="me-3 py-2 text-white text-decoration-none" href="blind" style="margin-right: 2rem!important">노하우 공유</a>
+					<a class="me-3 py-2 text-white text-decoration-none" href="board" style="margin-right: 2rem!important">노하우 공유</a>
 					<a th:if="${session.userInfo == null}"
 						class="me-3 py-2 text-white text-decoration-none" href=""
 						data-bs-toggle="modal" data-bs-target="#login">로그인</a> <a
@@ -84,7 +84,7 @@
   </div>
   <div class="offcanvas-body">
   <a class="me-3 py-2 text-white text-decoration-none" href="index#portFolioList" style="margin-right: 2rem!important"><h5>공개 포트폴리오</h5></a>
-	<a class="me-3 py-2 text-white text-decoration-none" href="blind" style="margin-right: 2rem!important"><h5>노하우 공유</h5></a><br>
+	<a class="me-3 py-2 text-white text-decoration-none" href="board" style="margin-right: 2rem!important"><h5>노하우 공유</h5></a><br>
     <a th:if="${session.userInfo == null}" data-bs-toggle="modal"
 						data-bs-target="#login"
 						class="py-2 text-white text-decoration-none" href="#"
