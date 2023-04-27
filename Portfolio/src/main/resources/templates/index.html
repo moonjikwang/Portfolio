@@ -22,7 +22,21 @@
 <script src="https://code.jquery.com/jquery-3.6.3.js"
 	integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
 	crossorigin="anonymous"></script>
-
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('https://tomcat.jikwang.net/Portfolio/sw.js', {
+    	  scope: 'https://tomcat.jikwang.net/Portfolio'
+    })
+      .then(registration => {
+        console.log('Service worker registered: ', registration);
+      })
+      .catch(registrationError => {
+        console.log('Service worker registration failed: ', registrationError);
+      });
+  });
+}
+</script>
 
 </head>
 <body>
