@@ -52,4 +52,9 @@ public class KakaoController {
 		session.invalidate();
 		return "redirect:index";
 	}
+	
+	@GetMapping("myPage")
+	public void myPage() {
+		
+	}
 }

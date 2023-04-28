@@ -38,7 +38,7 @@
 							height="45" class="rounded-circle me-2">
 					</div>
 					 <ul class="dropdown-menu">
-    <li th:if="${session.userInfo != null}"><a class="dropdown-item" th:href="@{/myPage(email=${session.userInfo.getEmail()})}">마이페이지</a></li>
+    <li th:if="${session.userInfo != null}"><a class="dropdown-item" th:href="@{/myPage(email=${session.userInfo.getEmail()})}">내 포트폴리오</a></li>
     <hr>
     <li><a class="dropdown-item" href="sessionOut">로그아웃</a></li>
   </ul>
@@ -80,7 +80,7 @@
     <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
   <div class="offcanvas-body">
-  <a class="me-3 py-2 text-white text-decoration-none" href="index#portFolioList" style="margin-right: 2rem!important"><h5>공개 포트폴리오</h5></a>
+  <a class="me-3 py-2 text-white text-decoration-none" href="index#portFolioList"  style="margin-right: 2rem!important"><h5>공개 포트폴리오</h5></a>
 	<a class="me-3 py-2 text-white text-decoration-none" href="board" style="margin-right: 2rem!important"><h5>노하우 공유</h5></a><br>
     <a th:if="${session.userInfo == null}" data-bs-toggle="modal"
 						data-bs-target="#login"
@@ -97,7 +97,7 @@
 						class="py-2 text-white text-decoration-none" href="#" data-bs-toggle="dropdown" aria-expanded="false"
 						>[[${session.userInfo.getName}]]</a>
 						<ul class="dropdown-menu">
-    <li th:if="${session.userInfo != null}"><a class="dropdown-item" th:href="@{/myPage(email=${session.userInfo.getEmail()})}">마이페이지</a></li>
+    <li th:if="${session.userInfo != null}"><a class="dropdown-item" th:href="@{/myPage(email=${session.userInfo.getEmail()})}">내 포트폴리오</a></li>
     <hr>
     <li><a class="dropdown-item" href="sessionOut">로그아웃</a></li>
   </ul>
