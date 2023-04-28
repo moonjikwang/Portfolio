@@ -40,7 +40,7 @@
 					 <ul class="dropdown-menu">
     <li th:if="${session.userInfo != null}"><a class="dropdown-item" th:href="@{/myPage(email=${session.userInfo.getEmail()})}">마이페이지</a></li>
     <hr>
-    <li><a class="dropdown-item" href="logout">로그아웃</a></li>
+    <li><a class="dropdown-item" href="sessionOut">로그아웃</a></li>
   </ul>
 				</nav>
 				<nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto mobilenav"
@@ -66,9 +66,6 @@
   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell-fill" viewBox="0 0 16 16">
   <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zm.995-14.901a1 1 0 1 0-1.99 0A5.002 5.002 0 0 0 3 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z"/>
 </svg>
-  <span th:if="${message.size() != 0}" class="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle">
-    <span class="visually-hidden">New alerts</span>
-  </span>
 </span>
 </a>
 </th:block>
@@ -102,7 +99,7 @@
 						<ul class="dropdown-menu">
     <li th:if="${session.userInfo != null}"><a class="dropdown-item" th:href="@{/myPage(email=${session.userInfo.getEmail()})}">마이페이지</a></li>
     <hr>
-    <li><a class="dropdown-item" href="logout">로그아웃</a></li>
+    <li><a class="dropdown-item" href="sessionOut">로그아웃</a></li>
   </ul>
 					</div>
   </div>
