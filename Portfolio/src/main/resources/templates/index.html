@@ -10,6 +10,7 @@
 	rel="stylesheet"
 	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
 	crossorigin="anonymous">
+<meta name="theme-color" content="#060b12">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="icon" type="image/x-icon" href="img/menu.png">
 <link rel="shortcut icon" type="image/x-icon" href="img/menu.png">
@@ -83,8 +84,7 @@ if ('serviceWorker' in navigator) {
 		<main class="container">
 			<div
 				class="row row-cols-1 row-cols-lg-3 row-cols-xl-4 mb-3 text-center"
-				style="padding: 0px;"
-				id="portFolioList">
+				style="padding: 0px;" id="portFolioList">
 				<div class="col skillDiv" th:each="num : ${#numbers.sequence(0, 7)}">
 					<th:block>
 						<a href="#" style="text-decoration: none; color: #adb5bd;">
@@ -95,11 +95,11 @@ if ('serviceWorker' in navigator) {
 									<small class="text-muted fw-light"
 										style="color: #FFFFFF !important;">작성일 | 2023.04.26</small>
 									<ul class="list-unstyled mt-3 mb-4">
-										<span class="textLine h6"><b style="color: #FFFFFF;">포트폴리오 제목</b></span>
+										<span class="textLine h6"><b style="color: #FFFFFF;">포트폴리오
+												제목</b></span>
 										<br>
 										<span class="badge text-bg-light"
-											style="color: dimgrey !important;">🗂️백엔드
-											개발자</span>
+											style="color: dimgrey !important;">🗂️백엔드 개발자</span>
 
 									</ul>
 									<hr>
@@ -136,7 +136,8 @@ if ('serviceWorker' in navigator) {
 
 		<!-- footer fragment 사용 -->
 		<th:block th:replace="fragments/footer :: footerFragment"></th:block>
-		<a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" style="color:white; background: linear-gradient(to bottom right, #05890e, #4fba43); border: none;"
+		<a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top"
+			style="color: white; background: linear-gradient(to bottom right, #05890e, #4fba43); border: none;"
 			role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16"
 				height="16" fill="currentColor" class="bi bi-arrow-up"
 				viewBox="0 0 16 16">

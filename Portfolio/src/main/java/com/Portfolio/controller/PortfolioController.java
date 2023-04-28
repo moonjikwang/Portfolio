@@ -12,7 +12,6 @@ public class PortfolioController {
 	}
 	@GetMapping("index")
 	public void index() {
-		
 	}
 	
 }

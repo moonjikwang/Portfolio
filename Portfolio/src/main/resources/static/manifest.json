@@ -6,7 +6,7 @@
   "name": "new Portfolio();",
   "orientation": "any",
   "scope": "https://tomcat.jikwang.net/Portfolio",
-  "short_name": "new Project();",
+  "short_name": "new Portfolio();",
   "start_url": "https://tomcat.jikwang.net/Portfolio/index",
   "theme_color": "#060b12",
   "categories": [
@@ -37,7 +37,13 @@
             "src": "https://tomcat.jikwang.net/Portfolio/img/icon-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
-        }
+        },
+          {
+    "src": "https://tomcat.jikwang.net/Portfolio/img/icon-512x512.png",
+    "sizes": "512x512",
+    "type": "image/png",
+    "purpose": "maskable"
+  }
     
   ],
   "shortcuts": [],
