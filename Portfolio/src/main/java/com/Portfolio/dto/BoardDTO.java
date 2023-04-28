@@ -16,7 +16,9 @@ public class BoardDTO {
 	private Long bno;
 	private String title;
 	private String content;
+	private String email;
 	private String name;
 	private int viewCount;
+	private int commentsCount;
 	private LocalDateTime regDate,modDate;
 }

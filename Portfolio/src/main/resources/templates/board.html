@@ -68,10 +68,11 @@
 							<td style="width: 5%" class="text-center">[[${board.bno}]]</td>
 							<td style="width: 50%"><a class="text-reset"
 								style="text-decoration: none;"
-								th:href="@{/blindRead(bno=${board.bno})}"> <span
+								th:href="@{/boardRead(bno=${board.bno})}"> <span
 									th:if="${board.viewCount >= 10}" class="badge text-bg-danger"
 									style="color: red;">🔥인기글</span> [[${board.title}]]
-
+							<span th:if="${board.commentsCount != 0}"
+									th:text="'('+${board.commentsCount}+')'"></span>
 							</a></td>
 							<!-- 작성자, 작성일, 조회수 -->
 							<td style="width: 17%" class="text-center">[[${board.name}]]</td>
@@ -82,7 +83,7 @@
 					</tbody>
 				</table>
 
-				<form action="blindWrite" method="get" style="float: right;">
+				<form action="boardWrite" method="get" style="float: right;">
 					<button type="submit" class="btn btn-success mb-3">새글쓰기</button>
 				</form>
 				<ul class="pagination">
@@ -130,9 +131,11 @@
 							<td style="width: 70%">
 								<div>
 									<a class="text-reset" style="text-decoration: none;"
-										th:href="@{/blindRead(bno=${board.bno})}"><p
+										th:href="@{/boardRead(bno=${board.bno})}"><p
 											style="margin-bottom: 5px;">
 											[[${board.title}]] </span>
+									<span th:if="${board.commentsCount != 0}"
+									th:text="'('+${board.commentsCount}+')'"></span>
 										</p> <span class="small"><svg
 												xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 												fill="currentColor" class="bi bi-clock-history"
@@ -152,7 +155,7 @@
 					</tbody>
 				</table>
 
-				<form action="blindWrite" method="get" style="float: right;">
+				<form action="boardWrite" method="get" style="float: right;">
 					<button type="submit" class="btn btn-success mb-3">새글쓰기</button>
 				</form>
 
@@ -202,7 +205,7 @@
 				viewBox="0 0 16 16">
   <path fill-rule="evenodd"
 					d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
-				<svg></a>
+				</svg></a>
 	</div>
 
 	
