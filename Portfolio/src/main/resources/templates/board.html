@@ -68,10 +68,11 @@
 							<td style="width: 5%" class="text-center">[[${board.bno}]]</td>
 							<td style="width: 50%"><a class="text-reset"
 								style="text-decoration: none;"
-								th:href="@{/blindRead(bno=${board.bno})}"> <span
+								th:href="@{/boardRead(bno=${board.bno})}"> <span
 									th:if="${board.viewCount >= 10}" class="badge text-bg-danger"
 									style="color: red;">🔥인기글</span> [[${board.title}]]
-
+							<span th:if="${board.commentsCount != 0}"
+									th:text="'('+${board.commentsCount}+')'"></span>
 							</a></td>
 							<!-- 작성자, 작성일, 조회수 -->
 							<td style="width: 17%" class="text-center">[[${board.name}]]</td>
@@ -81,42 +82,65 @@
 						</tr>
 					</tbody>
 				</table>
+				
+				<div class="row">
+				    <form class="row" th:action="@{/search}" method="get">
+				        <div class="input-group input-group-sm mb-3" style="max-width: 100%">
+				            <select class="form-select form-select-sm" name="searchType" style="max-width: 25%">
+				                <option value="writer">작성자</option>
+				                <option value="title">제목</option>
+				                <option value="content">내용</option>
+				                <option value="all">작성자+제목+내용</option>
+				                
+				            </select>
+			                <input type="text" class="form-control" name="keyword" placeholder="검색어를 입력하세요" style="max-width: 70%" aria-label="검색어를 입력하세요" aria-describedby="button-addon2">
+			                <button class="btn btn-outline-secondary" type="submit" id="button-addon2" >검색</button>
+			                <a href="board"><button class="btn btn-outline-secondary" type="button" id="button-reset" >초기화</button></a>
+			            </div>
+				    </form>
+				</div>
 
-				<form action="blindWrite" method="get" style="float: right;">
+				<form action="boardWrite" method="get" style="float: right;">
 					<button type="submit" class="btn btn-success mb-3">새글쓰기</button>
 				</form>
 				<ul class="pagination">
-					<li class="page-item"><a class="page-link"
-						th:if="${boards.number != 0}"
-						th:href="@{${url}(page=${boards.number - 1})}"
-						aria-label="Previous"
-						style="background-color: rgb(255, 255, 255, 0); border: none; border-radius: 50%;">
-							<span aria-hidden="true">&laquo;</span> <span
-							class="visually-hidden">Previous</span>
-					</a></li>
-					<li class="page-item"
-						th:class="${boards.number == 0} ? active : ''"></li>
-					<li class="page-item"
-						th:each="i : ${#numbers.sequence(boards.number/5*5, (boards.number/5*5)+4)}"
-						th:class="${boards.number == i} ? active : ''"
-						th:if="${i < boards.totalPages}"><a class="page-link"
-						th:if="${boards.number != i}" th:href="@{${url}(page=${i})}"
-						th:text="${i + 1}"
-						style="background-color: rgb(255, 255, 255, 0); border: none; border-radius: 50%;"></a>
-						<a class="page-link" th:if="${boards.number == i}" href="#"
-						th:text="${i + 1}" style="border: none; border-radius: 35%;"><span
-							class="visually-hidden">(current)</span></a></li>
-					<li class="page-item"
-						th:class="${boards.number == boards.totalPages-1} ? active : ''">
-					</li>
-					<li class="page-item"><a class="page-link"
-						th:if="${boards.number != (boards.totalPages-1)}"
-						th:href="@{${url}(page=${boards.number + 1})}" aria-label="Next"
-						style="background-color: rgb(255, 255, 255, 0); border: none; border-radius: 50%;">
-							<span aria-hidden="true">&raquo;</span> <span
-							class="visually-hidden">Next</span>
-					</a></li>
+				  <li class="page-item"><a class="page-link"
+				    th:if="${boards.number != 0}"
+				    th:href="@{${url}(page=${boards.number - 1}, searchType=${searchType}, keyword=${keyword})}"
+				    aria-label="Previous"
+				    style="background-color: rgb(255, 255, 255, 0); border: none; border-radius: 50%;">
+				      <span aria-hidden="true">&laquo;</span> <span
+				      class="visually-hidden">Previous</span>
+				  </a></li>
+				  <li class="page-item"
+				    th:class="${boards.number == 0} ? active : ''"></li>
+				  <li class="page-item"
+				    th:each="i : ${#numbers.sequence(boards.number/5*5, (boards.number/5*5)+4)}"
+				    th:class="${boards.number == i} ? active : ''"
+				    th:if="${i < boards.totalPages}">
+				      <a class="page-link"
+				        th:if="${boards.number != i}"
+				        th:href="@{${url}(page=${i}, searchType=${searchType}, keyword=${keyword})}"
+				        th:text="${i + 1}"
+				        style="background-color: rgb(255, 255, 255, 0); border: none; border-radius: 50%;"></a>
+				      <a class="page-link" th:if="${boards.number == i}" href="#"
+				        th:text="${i + 1}" style="border: none; border-radius: 35%;">
+				        <span class="visually-hidden">(current)</span>
+				      </a>
+				  </li>
+				  <li class="page-item"
+				    th:class="${boards.number == boards.totalPages-1} ? active : ''">
+				  </li>
+				  <li class="page-item"><a class="page-link"
+				    th:if="${boards.hasNext && !boards.isEmpty }"
+				    th:href="@{${url}(page=${boards.number + 1}, searchType=${searchType}, keyword=${keyword})}"
+				    aria-label="Next"
+				    style="background-color: rgb(255, 255, 255, 0); border: none; border-radius: 50%;">
+				      <span aria-hidden="true">&raquo;</span> <span
+				      class="visually-hidden">Next</span>
+				  </a></li>
 				</ul>
+
 			</fieldset>
 
 
@@ -130,9 +154,11 @@
 							<td style="width: 70%">
 								<div>
 									<a class="text-reset" style="text-decoration: none;"
-										th:href="@{/blindRead(bno=${board.bno})}"><p
+										th:href="@{/boardRead(bno=${board.bno})}"><p
 											style="margin-bottom: 5px;">
 											[[${board.title}]] </span>
+									<span th:if="${board.commentsCount != 0}"
+									th:text="'('+${board.commentsCount}+')'"></span>
 										</p> <span class="small"><svg
 												xmlns="http://www.w3.org/2000/svg" width="16" height="16"
 												fill="currentColor" class="bi bi-clock-history"
@@ -152,41 +178,64 @@
 					</tbody>
 				</table>
 
-				<form action="blindWrite" method="get" style="float: right;">
+				<div class="row">
+				    <form class="row" th:action="@{/search}" method="get">
+				        <div class="input-group input-group-sm mb-3" style="max-width: 100%">
+				            <select class="form-select form-select-sm" name="searchType" style="max-width: 25%">
+				                <option value="writer">작성자</option>
+				                <option value="title">제목</option>
+				                <option value="content">내용</option>
+				                <option value="all">작성자+제목+내용</option>
+				                
+				            </select>
+			                <input type="text" class="form-control" name="keyword" placeholder="검색어를 입력하세요" style="max-width: 70%" aria-label="검색어를 입력하세요" aria-describedby="button-addon2">
+			                <button class="btn btn-outline-secondary" type="submit" id="button-addon2" >검색</button>
+			                <a href="board"><button class="btn btn-outline-secondary" type="button" id="button-reset" >초기화</button></a>
+			            </div>
+				    </form>
+				</div>
+
+				
+				<form action="boardWrite" method="get" style="float: right;">
 					<button type="submit" class="btn btn-success mb-3">새글쓰기</button>
 				</form>
-
+				
 				<ul class="pagination">
-					<li class="page-item"><a class="page-link"
-						th:if="${boards.number != 0}"
-						th:href="@{${url}(page=${boards.number - 1})}"
-						aria-label="Previous"
-						style="background-color: rgb(255, 255, 255, 0); border: none; border-radius: 50%;">
-							<span aria-hidden="true">&laquo;</span> <span
-							class="visually-hidden">Previous</span>
-					</a></li>
-					<li class="page-item"
-						th:class="${boards.number == 0} ? active : ''"></li>
-					<li class="page-item"
-						th:each="i : ${#numbers.sequence(boards.number/5*5, (boards.number/5*5)+4)}"
-						th:class="${boards.number == i} ? active : ''"
-						th:if="${i < boards.totalPages}"><a class="page-link"
-						th:if="${boards.number != i}" th:href="@{${url}(page=${i})}"
-						th:text="${i + 1}"
-						style="background-color: rgb(255, 255, 255, 0); border: none; border-radius: 50%;"></a>
-						<a class="page-link" th:if="${boards.number == i}" href="#"
-						th:text="${i + 1}" style="border: none; border-radius: 35%;"><span
-							class="visually-hidden">(current)</span></a></li>
-					<li class="page-item"
-						th:class="${boards.number == boards.totalPages-1} ? active : ''">
-					</li>
-					<li class="page-item"><a class="page-link"
-						th:if="${boards.number != (boards.totalPages-1)}"
-						th:href="@{${url}(page=${boards.number + 1})}" aria-label="Next"
-						style="background-color: rgb(255, 255, 255, 0); border: none; border-radius: 50%;">
-							<span aria-hidden="true">&raquo;</span> <span
-							class="visually-hidden">Next</span>
-					</a></li>
+				  <li class="page-item"><a class="page-link"
+				    th:if="${boards.number != 0}"
+				    th:href="@{${url}(page=${boards.number - 1}, searchType=${searchType}, keyword=${keyword})}"
+				    aria-label="Previous"
+				    style="background-color: rgb(255, 255, 255, 0); border: none; border-radius: 50%;">
+				      <span aria-hidden="true">&laquo;</span> <span
+				      class="visually-hidden">Previous</span>
+				  </a></li>
+				  <li class="page-item"
+				    th:class="${boards.number == 0} ? active : ''"></li>
+				  <li class="page-item"
+				    th:each="i : ${#numbers.sequence(boards.number/5*5, (boards.number/5*5)+4)}"
+				    th:class="${boards.number == i} ? active : ''"
+				    th:if="${i < boards.totalPages}">
+				      <a class="page-link"
+				        th:if="${boards.number != i}"
+				        th:href="@{${url}(page=${i}, searchType=${searchType}, keyword=${keyword})}"
+				        th:text="${i + 1}"
+				        style="background-color: rgb(255, 255, 255, 0); border: none; border-radius: 50%;"></a>
+				      <a class="page-link" th:if="${boards.number == i}" href="#"
+				        th:text="${i + 1}" style="border: none; border-radius: 35%;">
+				        <span class="visually-hidden">(current)</span>
+				      </a>
+				  </li>
+				  <li class="page-item"
+				    th:class="${boards.number == boards.totalPages-1} ? active : ''">
+				  </li>
+				  <li class="page-item"><a class="page-link"
+				    th:if="${boards.hasNext && !boards.isEmpty }"
+				    th:href="@{${url}(page=${boards.number + 1}, searchType=${searchType}, keyword=${keyword})}"
+				    aria-label="Next"
+				    style="background-color: rgb(255, 255, 255, 0); border: none; border-radius: 50%;">
+				      <span aria-hidden="true">&raquo;</span> <span
+				      class="visually-hidden">Next</span>
+				  </a></li>
 				</ul>
 			</fieldset>
 
@@ -202,7 +251,7 @@
 				viewBox="0 0 16 16">
   <path fill-rule="evenodd"
 					d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
-				<svg></a>
+				</svg></a>
 	</div>
 
 	
