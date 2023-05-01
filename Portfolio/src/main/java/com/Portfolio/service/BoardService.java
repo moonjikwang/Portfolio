@@ -112,6 +112,25 @@ public class BoardService {
 	//=====================END========================
 	
 	//====================START=======================
+	//검색
+	public Page<BoardDTO> search(String searchType, String keyword, Pageable pageable) {
+	    Page<Board> boardPage;
+	    if (searchType.equals("writer")) {
+	        boardPage = boardRepository.findByWriter_EmailContainingIgnoreCaseOrderByBnoDesc(keyword, pageable);
+	    } else if (searchType.equals("title")) {
+	        boardPage = boardRepository.findByTitleContainingIgnoreCaseOrderByBnoDesc(keyword, pageable);
+	    } else if (searchType.equals("content")) {
+	        boardPage = boardRepository.findByContentContainingIgnoreCaseOrderByBnoDesc(keyword, pageable);
+	    } else if (searchType.equals("all")) {
+	        boardPage = boardRepository.searchByTitleOrContentOrWriter(keyword, pageable);
+	    } else {
+	        throw new IllegalArgumentException("Invalid search type: " + searchType);
+	    }
+	    return boardPage.map(board -> entityToDto(board));
+	}
+	//=====================END========================
+	
+	//====================START=======================
 	//조회수 세팅
 	@Transactional
 	public Long viewCount(Long bno) {
