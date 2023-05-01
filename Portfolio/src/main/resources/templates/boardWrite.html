@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>new Project();</title>
+<title>new Portfolio();</title>
 <link rel="icon" type="image/x-icon" href="img/menu.png">
 <link rel="shortcut icon" type="image/x-icon" href="img/menu.png">
 <script src="https://code.jquery.com/jquery-3.6.3.js"
@@ -31,17 +31,7 @@ if(isNotMember){
 </script>
 </head>
 <body>
-	<div id="loading">
-		<div class="loader">
-			<div class="inner one"></div>
-			<div class="inner two"></div>
-			<div class="inner three"></div>
-		</div>
-		<div class="loading-text ">
-			<small style="font-family: 'Righteous', cursive;">new
-				Portfolio();</small>
-		</div>
-	</div>
+	
 	<div class="py-3" style="padding-left: 0px; padding-right: 0px;">
 		<th:block th:replace="fragments/header :: headerFragment"></th:block>
 
@@ -58,7 +48,7 @@ if(isNotMember){
 					<input th:if="${session.userInfo != null}" type="hidden"
 						name="nickName" th:value="${session.userInfo.getNickName()}">
 					<input th:if="${session.userInfo != null}" type="hidden"
-						name="writer" th:value="${session.userInfo.getEmail}"> 
+						name="email" th:value="${session.userInfo.getEmail}"> 
 					<input
 						type="text" name="title" class="form-control mt-4 mb-2"
 						autocomplete="off" placeholder="제목을 입력해주세요." required>
@@ -172,11 +162,6 @@ function saveGallery() {
 				return false;
 			});
 		});
-	</script>
-	<script>
-		setTimeout(function() {
-			$('#loading').hide();
-		}, 1000);
 	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

@@ -66,10 +66,11 @@
 				<div class="col-md-5 col-lg-5">
 					<div class="col-10">
 						<h3 class="d-flex justify-content-between align-items-center mb-3">
-							<span class="text-light"><b>문지광</b></span>
+							<span class="text-light"><b th:text="${session.userInfo.name == null? '이름을 설정해주세요.':session.userInfo.name}"></b></span>
 
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-								fill="currentColor" class="bi bi-pencil-square"
+								fill="#a7e3b0" class="bi bi-pencil-square"
+								style="color: #a7e3b0;"
 								viewBox="0 0 16 16">
   <path
 									d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
@@ -85,7 +86,7 @@
   <path fill-rule="evenodd"
 									d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
 </svg>
-							010-1234-5678
+							<th:block th:text="${session.userInfo.tel == null? '연락처를 설정해주세요.':session.userInfo.tel}"></th:block>
 						</p>
 						<p>
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -96,7 +97,7 @@
   <path
 									d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z" />
 </svg>
-							moonjikwang@naver.com
+							<th:block th:text="${session.userInfo.showEmail == null?'이메일을 설정해주세요.':session.userInfo.showEmail }"></th:block>
 						</p>
 						<p>
 							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -104,8 +105,8 @@
   <path
 									d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
 </svg>
-							<a href="https://github.com/moonjikwang" target="_blank"
-								style="text-decoration: none; color: #a7e3b0;">https://github.com/moonjikwang</a>
+							<a th:href="${session.userInfo.gitUrl}" target="_blank"
+								style="text-decoration: none; color: #a7e3b0;" th:text="${session.userInfo.gitUrl == null?'Github 링크를 입력해주세요.':session.userInfo.gitUrl}"></a>
 
 						</p>
 						<p>
@@ -114,12 +115,13 @@
   <path
 									d="M9.972 2.508a.5.5 0 0 0-.16-.556l-.178-.129a5.009 5.009 0 0 0-2.076-.783C6.215.862 4.504 1.229 2.84 3.133H1.786a.5.5 0 0 0-.354.147L.146 4.567a.5.5 0 0 0 0 .706l2.571 2.579a.5.5 0 0 0 .708 0l1.286-1.29a.5.5 0 0 0 .146-.353V5.57l8.387 8.873A.5.5 0 0 0 14 14.5l1.5-1.5a.5.5 0 0 0 .017-.689l-9.129-8.63c.747-.456 1.772-.839 3.112-.839a.5.5 0 0 0 .472-.334z" />
 </svg>
-							<span class="badge text-bg-light">Spring Boot</span> <span
-								class="badge text-bg-light">Java</span> <span
-								class="badge text-bg-light">JSP</span> <span
-								class="badge text-bg-light">Mysql</span> <span
-								class="badge text-bg-light">MariaDB</span>
-
+<th:block th:if="${session.userInfo.skills != null}">
+  <th:block th:each="skillName : ${#strings.arraySplit(session.userInfo.skills, ',')}">
+    <span class="badge text-bg-light">[[${skillName}]]</span>
+  </th:block>
+  <span th:if="${#strings.isEmpty(session.userInfo.skills)}">핵심스킬을 설정해주세요.</span>
+</th:block>
+<span th:unless="${session.userInfo.skills != null}">핵심스킬을 설정해주세요.</span>
 						</p>
 
 
@@ -133,8 +135,9 @@
 </svg>프로젝트 추가</button>
 					</div>
 					<div id="form-container" style="display: none;">
-						<form class="needs-validation" action="addProject" method="POST"
+						<form class="needs-validation" action="addProject" enctype="multipart/form-data" method="POST"
 							novalidate="">
+							<input type="hidden" name="email" th:value="${session.userInfo.email}">
 							<h4 class="mb-3">프로젝트 설명</h4>
 							<div class="row g-3">
 								<div class="col-sm-8">
@@ -194,7 +197,7 @@
 								</div>
 
 								<div class="col-12">
-									<label for="webLink" class="form-label">Github 주소 <span
+									<label for="gitLink" class="form-label">Github 주소 <span
 										class="text-body-secondary">(Optional)</span></label>
 									<div class="input-group mb-3">
 										<span class="input-group-text" id="basic-addon1"><svg
@@ -202,7 +205,7 @@
 												fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
   <path
 													d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-</svg></span> <input type="text" id="webLink" class="form-control" name="webLink"
+</svg></span> <input type="text" id="gitLink" class="form-control" name="gitLink"
 											placeholder="https://github.com/project"
 											aria-label="Username" aria-describedby="basic-addon1">
 									</div>
@@ -228,6 +231,29 @@
 							</div>
 						</form>
 					</div>
+					<div class="col d-flex align-items-start mt-1" th:each="project: ${projects}">
+      
+        <div>
+          <h4 class="fs-2">[[${project.title}]]</h4><small>[[${project.date}]]</small>
+          <p>
+<th:block th:if="${project.skill != null}">
+  <th:block th:each="skillName : ${#strings.arraySplit(project.skill, ',')}">
+    <span class="badge text-bg-light">[[${skillName}]]</span>
+  </th:block>
+  <span th:if="${#strings.isEmpty(project.skill)}">핵심스킬을 설정해주세요.</span>
+</th:block>
+<span th:unless="${project.skill != null}">핵심스킬을 설정해주세요.</span>
+    </p>
+    <p>
+    - [[${project.introduce}]]
+    <br>
+    [[${project.description}]]
+    </p>
+    <a th:href="${project.webLink}" style="text-decoration: none; color: #a7e3b0;">[[${project.webLink}]]</a><br>
+    <a th:href="${project.gitLink}" style="text-decoration: none; color: #a7e3b0;">[[${project.gitLink}]]</a>
+    
+        </div>
+      </div>
 				</div>
 			</div>
 

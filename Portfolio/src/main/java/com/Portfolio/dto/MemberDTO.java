@@ -38,6 +38,10 @@ public class MemberDTO {
 	private String nickName;
 	
 	private String profileImg;
+	private String tel;
+	private String gitUrl;
+	private String showEmail;
+	private String skills;
 	private LocalDateTime regDate,modDate;
 	
 

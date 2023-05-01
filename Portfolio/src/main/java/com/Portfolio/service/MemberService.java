@@ -188,6 +188,9 @@ public class MemberService {
 		.email(member.getEmail())
 		.password(member.getPassword())
 		.name(member.getName())
+		.tel(member.getTel())
+		.gitUrl(member.getGitUrl())
+		.skills(member.getSkills())
 		.profileImg(member.getProfileImg())
 		.build();
 		return dto;
@@ -196,6 +199,9 @@ public class MemberService {
 		Member entity = Member.builder()
 		.email(dto.getEmail())
 		.name(dto.getName())
+		.tel(dto.getTel())
+		.gitUrl(dto.getGitUrl())
+		.skills(dto.getSkills())
 		.password(dto.getPassword())
 		.profileImg(dto.getProfileImg())
 		.build();
