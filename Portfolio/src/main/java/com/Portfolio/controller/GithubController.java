@@ -25,10 +25,10 @@ public class GithubController {
 		MemberDTO userInfo = githubService.getUserInfo(accessToken);
 		MemberDTO member = memberService.findByEmail(userInfo.getEmail());
 		if(member != null) {
-			session.setAttribute("userInfo",userInfo);
+			session.setAttribute("userInfo",member);
 		}else {
-			memberService.register(userInfo);
-			session.setAttribute("userInfo", userInfo);
+			MemberDTO newMember = memberService.register(userInfo);
+			session.setAttribute("userInfo", newMember);
 		}
 	    return "redirect:index";
 	}

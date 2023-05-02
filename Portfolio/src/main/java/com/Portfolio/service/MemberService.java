@@ -150,10 +150,20 @@ public class MemberService {
 		}
 	}
 	@Transactional
-	public String register(MemberDTO dto) {
+	public MemberDTO register(MemberDTO dto) {
 		Member member = dtoToEntity(dto);
+		Member result = kakaoRepository.save(member);
+		return entityToDto(result);
+	}
+	
+	public MemberDTO modify(MemberDTO dto) {
+		Member member = kakaoRepository.findById(dto.getEmail()).get();
+		member.setShowEmail(dto.getShowEmail());
+		member.setGitUrl(dto.getGitUrl());
+		member.setTel(dto.getTel());
+		member.setSkills(dto.getSkills());
 		kakaoRepository.save(member);
-		return member.getEmail();
+		return entityToDto(member);
 	}
 
 	public MemberDTO login(String email, String password) {
@@ -189,6 +199,7 @@ public class MemberService {
 		.password(member.getPassword())
 		.name(member.getName())
 		.tel(member.getTel())
+		.showEmail(member.getShowEmail())
 		.gitUrl(member.getGitUrl())
 		.skills(member.getSkills())
 		.profileImg(member.getProfileImg())
@@ -200,6 +211,7 @@ public class MemberService {
 		.email(dto.getEmail())
 		.name(dto.getName())
 		.tel(dto.getTel())
+		.showEmail(dto.getShowEmail())
 		.gitUrl(dto.getGitUrl())
 		.skills(dto.getSkills())
 		.password(dto.getPassword())

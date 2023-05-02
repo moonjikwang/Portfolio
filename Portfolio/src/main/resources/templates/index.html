@@ -169,6 +169,24 @@ if ('serviceWorker' in navigator) {
 		});
 	</script>
 	<script>
+	let deferredPrompt
+
+	window.addEventListener('beforeinstallprompt', event => {
+	    event.preventDefault()
+	    deferredPrompt = event
+	})
+
+	const installApp = () => {
+	    if (!deferredPrompt) {
+	        alert('이미 앱이 설치되어 있거나 앱을 설치할 수 없는 환경입니다')
+	        return
+	    }
+
+	    deferredPrompt.prompt()
+	}
+	
+	</script>
+	<script>
 		var multipleCardCarousel = document.querySelector("#carouselExample");
 		if (window.matchMedia("(min-width: 768px)").matches) {
 			var carousel = new bootstrap.Carousel(multipleCardCarousel, {

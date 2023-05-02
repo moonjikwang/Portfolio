@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,7 @@ public class KakaoController {
 	@Autowired
 	ProjectService projectService;
 	
+	@Autowired
 	private final MemberService kakaoLoginService;
 	// 1번 카카오톡에 사용자 코드 받기(jsp의 a태그 href에 경로 있음)
 	@RequestMapping(value = "/oauth", method = RequestMethod.GET)
@@ -51,8 +53,8 @@ public class KakaoController {
 		session.setAttribute("userInfo", member);
 		}else {
 			MemberDTO dto = MemberDTO.builder().email("kakao_"+userInfo.get("nickname").toString()).profileImg(userInfo.get("profileImg").toString()).name(userInfo.get("nickname").toString()).build();
-			kakaoLoginService.register(dto);
-			session.setAttribute("userInfo", dto);
+			MemberDTO newMember = kakaoLoginService.register(dto);
+			session.setAttribute("userInfo", newMember);
 		} 
 		return "redirect:index";
 
@@ -67,7 +69,8 @@ public class KakaoController {
 	@GetMapping("myPage")
 	public String myPage(Model model,HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session = req.getSession();
-	 	MemberDTO dto = (MemberDTO) session.getAttribute("userInfo");
+		MemberDTO dto = (MemberDTO) session.getAttribute("userInfo");
+	 	MemberDTO member = kakaoLoginService.findByEmail(dto.getEmail());
 	 	if(dto == null || dto.getEmail() == null) {
 	        try {
 	            res.setContentType("text/html;charset=UTF-8");
@@ -80,9 +83,15 @@ public class KakaoController {
 	        return null; // null을 반환하여 뷰 페이지를 반환하지 않습니다.
 	 	}else {
 	 		List<ProjectDTO> projectList = projectService.getList(dto.getEmail());
+	 		model.addAttribute("user",member);
 			model.addAttribute("projects", projectList);
 			return "myPage";
 	 	}
 		
+	}
+	@PostMapping("introEdit")
+	public String introEdit(MemberDTO dto) {
+		kakaoLoginService.modify(dto);
+		return "redirect:myPage";
 	}
 }
