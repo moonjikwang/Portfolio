@@ -50,7 +50,7 @@
 							height="45" class="rounded-circle me-2">
 					</div>
 					 <ul class="dropdown-menu">
-    <li th:if="${session.userInfo != null}"><a class="dropdown-item" th:href="@{/myPage(email=${session.userInfo.getEmail()})}">내 포트폴리오</a></li>
+    <li th:if="${session.userInfo != null}"><a class="dropdown-item" href="myPage">내 포트폴리오</a></li>
     <hr>
     <li><a class="dropdown-item" href="sessionOut">로그아웃</a></li>
   </ul>
@@ -109,7 +109,7 @@
 						class="py-2 text-white text-decoration-none" href="#" data-bs-toggle="dropdown" aria-expanded="false"
 						>[[${session.userInfo.getName}]]</a>
 						<ul class="dropdown-menu">
-    <li th:if="${session.userInfo != null}"><a class="dropdown-item" th:href="@{/myPage(email=${session.userInfo.getEmail()})}">내 포트폴리오</a></li>
+    <li th:if="${session.userInfo != null}"><a class="dropdown-item" href="myPage">내 포트폴리오</a></li>
     <hr>
     <li><a class="dropdown-item" href="sessionOut">로그아웃</a></li>
   </ul>

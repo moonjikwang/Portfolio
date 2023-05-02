@@ -1,0 +1,207 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>new Portfolio();</title>
+<link rel="icon" type="image/x-icon"
+	href="https://tomcat.jikwang.net/Portfolio/img/menu.png">
+<link rel="shortcut icon" type="image/x-icon"
+	href="https://tomcat.jikwang.net/Portfolio/img/menu.png">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.3.js"
+	integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+	crossorigin="anonymous"></script>
+<meta name="theme-color" content="#060b12">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Righteous&family=Noto+Sans+KR:wght@500&family=Raleway:wght@900&family=Ubuntu:wght@500&display=swap"
+	rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin
+	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<link rel="stylesheet" href="css/main.css">
+<style>
+.active .page-link {
+	background-color: #3bb84d !important;
+	border-radius: 50%;
+}
+
+.page-link {
+	color: #a7e3b0;
+}
+
+.page-link:hover {
+	color: #3bb84d;
+}
+
+.form-label {
+	margin: 0px !important;
+	padding: 0px !important;
+}
+
+.nav-link:hover{
+	color: #ab6fd8!important;
+}
+</style>
+</head>
+<body>
+	<div class="py-3 col-md-10 mx-auto" style="padding-left: 0px; max-width: 1024px; padding-right: 0px;">
+  <header class="mb-5">
+    <div>
+      <nav class="nav nav-masthead justify-content-center float-md-end mt-3">
+        <a class="nav-link fw-bold py-1 px-0 text-light" style="margin-right: 50px;" aria-current="page" href="#introduce">Introduce</a>
+        <a class="nav-link fw-bold py-1 px-0 text-light" style="margin-right: 50px;" href="#projects">Projects</a>
+        <a class="nav-link fw-bold py-1 px-0 text-light" style="margin-right: 50px;" href="#">Contact</a>
+      </nav>
+    </div>
+  </header>
+		<main class="px-3">
+		<section id="introduce" style="margin-top: 15%;">
+		<div class="clearfix">
+  <img src="img/background.png" width="55%" style="display: inline;position: relative; float: right;">
+</div>
+<h1 style="  font-family: 'Konkhmer Sleokchher', cursive;
+  font-size: 65px;
+  margin-top: -15%;
+  position: relative;
+  /* 그라데이션 적용 */
+  background-image: linear-gradient(to top right, #ab6fd8,#ab6fd8, #f4cb6c, #c6e38c);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* 텍스트와 그라데이션 옆으로 정렬 */
+  display: inline-block;">
+Hello. I’m<br>Theelipan</h1>
+<p class="col-md-5" style="margin-bottom: 15%;">I have a passion for developing user-friendly, accessible and responsive websites. I never stop learning and for me, each new project is another adventure.</p>
+</section>
+
+<section id="projects">
+<h4 style="margin-bottom: 2rem;"><b>Projects</b></h4>
+<div class="row align-items-center mb-3">
+    <div class="col-md-6">
+        <img src="img/social.png" width="100%" loading="lazy" alt="MERN eCommerce" class="rounded-lg">
+    </div>
+    <div class="col-md-1"></div>
+    <div id="description" class="col-md-5 d-flex align-items-center">
+        <div>
+            <h4 style="  font-family: 'Konkhmer Sleokchher', cursive;
+  position: relative;
+  /* 그라데이션 적용 */
+  background-image: linear-gradient(to top right, #ab6fd8,#ab6fd8, #f4cb6c, #c6e38c);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* 텍스트와 그라데이션 옆으로 정렬 */
+  display: inline-block;">
+MERN ECOMMERCE</h4>
+<p>Full featured ecommerce store built with MERN stack and Paypal payments API. Admin page to manage customers, products & orders.</p>
+       
+<div class="d-flex overflow-auto pb-2 mb-2">
+  <span class="badge bg-light text-black m-1">Redux</span>
+  <span class="badge bg-light text-black m-1">React</span>
+  <span class="badge bg-light text-black m-1">MongoDB</span>
+  <span class="badge bg-light text-black m-1">JWT</span>
+  <span class="badge bg-light text-black m-1">Express</span>
+</div>
+       <a style="margin-right: 10px;"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+  <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+</svg>
+</a>
+       <a><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z"/>
+  <path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z"/>
+</svg>
+</a>
+        </div>
+    </div>
+</div>
+<h4 style="margin-bottom: 2rem; margin-top: 10rem;"><b>Skills & Tools</b></h4>
+</section>
+  </main>
+  
+  
+  
+  
+  
+  
+		<footer class="pt-4 my-md-5 pt-md-5 border-top" style="padding: 0px;">
+
+			<div class="row"
+				style="padding: 0px; margin-right: 0px; padding-left: 10px;">
+				<div class="col-10 col-md text-center">
+					<a href="https://tomcat.jikwang.net/Portfolio" style="text-decoration: none; color: white;">new Portfolio<span style="color: #a7e3b0;">(</span><span style="color: #77c783;">)</span><span style="color: #3bb84d;">;</span> <small class=" mb-3 text-muted">&copy;
+						2023</small><br><br></a>
+				</div>
+			</div>
+		</footer>
+
+		<a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top"
+			style="color: white; background: linear-gradient(to bottom right, #05890e, #4fba43); border: none;"
+			role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+				height="16" fill="currentColor" class="bi bi-arrow-up"
+				viewBox="0 0 16 16">
+  <path fill-rule="evenodd"
+					d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+				<svg></a>
+	</div>
+
+	<script>
+		const showFormBtn = document.getElementById('show-form-btn');
+		const formContainer = document.getElementById('form-container');
+
+		showFormBtn.addEventListener('click', function() {
+			formContainer.style.display = 'block';
+			showFormBtn.style.display = 'none';
+		});
+	</script>
+	<script>
+		const hideFormBtn = document.getElementById('cancelProject');
+		hideFormBtn.addEventListener('click', function() {
+			formContainer.style.display = 'none';
+			showFormBtn.style.display = 'block';
+		});
+	</script>
+
+	<script th:inline="javascript">
+		$(document).ready(function() {
+			var emailval = /*[[${regiInfo}]]*/"";
+			if (emailval != null) {
+				$('#test').modal('show');
+			}
+			$(window).scroll(function() {
+				if ($(this).scrollTop() > 50) {
+					$('#back-to-top').fadeIn();
+				} else {
+					$('#back-to-top').fadeOut();
+				}
+			});
+			// scroll body to 0px on click
+			$('#back-to-top').click(function() {
+				$('body,html').animate({
+					scrollTop : 0
+				}, 400);
+				return false;
+			});
+		});
+	</script>
+	<script>
+		setTimeout(function() {
+			$('#loading').hide();
+		}, 1000);
+	</script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+		crossorigin="anonymous"></script>
+</body>
+</html>
