@@ -122,10 +122,11 @@ public class BoardService {
 	    } else if (searchType.equals("content")) {
 	        boardPage = boardRepository.findByContentContainingIgnoreCaseOrderByBnoDesc(keyword, pageable);
 	    } else if (searchType.equals("all")) {
-	        boardPage = boardRepository.searchByTitleOrContentOrWriter(keyword, pageable);
+	        boardPage = boardRepository.findByWriter_EmailContainingIgnoreCaseOrTitleContainingIgnoreCaseOrContentContainingIgnoreCaseOrderByBnoDesc(keyword, keyword, keyword, pageable);
 	    } else {
 	        throw new IllegalArgumentException("Invalid search type: " + searchType);
 	    }
+	    
 	    return boardPage.map(board -> entityToDto(board));
 	}
 	//=====================END========================
