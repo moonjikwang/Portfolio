@@ -15,9 +15,8 @@ public interface BoardRepository extends JpaRepository<Board, Long>{
 	Page<Board> findByTitleContainingIgnoreCaseOrderByBnoDesc(String keyword, Pageable pageable);
 
 	Page<Board> findByContentContainingIgnoreCaseOrderByBnoDesc(String keyword, Pageable pageable);
-	
-	@Query(value = "SELECT * FROM board b WHERE b.title LIKE %:keyword% OR b.content LIKE %:keyword% OR b.writer_email LIKE %:keyword% ORDER BY DESC", nativeQuery = true)
-	Page<Board> searchByTitleOrContentOrWriter(@Param("keyword") String keyword, Pageable pageable);
+
+	Page<Board> findByWriter_EmailContainingIgnoreCaseOrTitleContainingIgnoreCaseOrContentContainingIgnoreCaseOrderByBnoDesc(String writer, String title, String content, Pageable pageable);
 
 
 }
