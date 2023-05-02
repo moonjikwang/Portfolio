@@ -39,6 +39,7 @@ public class MemberDTO {
 	
 	private String profileImg;
 	private LocalDateTime regDate,modDate;
+	private String token;
 	
 
 }
