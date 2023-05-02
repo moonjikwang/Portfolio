@@ -86,6 +86,12 @@ public class BoardController {
 		model.addAttribute("boards", boards);
 	}
 	
+	//새글쓰기 페이지로 매핌
+	@GetMapping("boardWrite")
+	public void boardWrite() {
+		
+	}
+	
 	//게시글 작성하기
 	@PostMapping("boardWrite")
 	public String boardWrite(BoardDTO dto,RedirectAttributes redirectAttributes) {
@@ -95,10 +101,13 @@ public class BoardController {
 		return "redirect:boardRead";
 	}
 	
-	//새글쓰기 페이지로 매핌
-	@GetMapping("boardWrite")
-	public void boardWrite() {
-		
+	//게시글 수정하기
+	@PostMapping("boardModify")
+	public String boardModify(BoardDTO dto,RedirectAttributes redirectAttributes) {
+		System.out.println("=========입력받은값 :"+dto);
+		boardService.modify(dto);
+		redirectAttributes.addAttribute("bno", dto.getBno());
+		return "redirect:boardRead";
 	}
 	
 	//게시글 삭제
