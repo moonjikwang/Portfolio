@@ -171,20 +171,24 @@ https://tomcat.jikwang.net/Portfolio/oauth">
       <input th:if="${session.userInfo !=null}" type="hidden" th:value="${session.userInfo.email}" name="email">
       <div class="modal-body">
       <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">연락처</label>
-  <input type="text" class="form-control" name="tel" placeholder="연락처를 입력해주세요." />
+  <label for="tel" class="form-label">연락처</label>
+  <input th:if="${user != null}" type="text" class="form-control" name="tel" th:value="${user.tel}" placeholder="연락처를 입력해주세요." />
 </div>
       <div class="mb-3">
   <label for="exampleFormControlTextarea1" class="form-label">이메일</label>
-  <input type="email" class="form-control" name="showEmail" placeholder="example@naver.com" />
+  <input th:if="${user != null}" type="email" class="form-control" name="showEmail" th:value="${user.showEmail}" placeholder="example@naver.com" />
 </div>
       <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">Github 링크</label>
-  <input type="text" class="form-control" name="gitUrl" placeholder="https://github.com/example" />
+  <label for="gitUrl" class="form-label">Github 링크</label>
+  <input th:if="${user != null}" type="text" class="form-control" name="gitUrl" th:value="${user.gitUrl}" placeholder="https://github.com/example" />
 </div>
       <div class="mb-3">
-  <label for="exampleFormControlTextarea1" class="form-label">핵심 스킬</label>
-  <input type="text" class="form-control" name="skills" placeholder="Java,JSP,Spring Boot 쉼표로 구분해서 작성" />
+  <label for="skills" class="form-label">핵심 스킬</label>
+  <input th:if="${user != null}" type="text" class="form-control" name="skills" th:value="${user.skills}" placeholder="Java,JSP,Spring Boot 쉼표로 구분해서 작성" />
+</div>
+      <div class="mb-3">
+  <label for="intro" class="form-label">자기 소개</label>
+  <textarea th:if="${user != null}" cols="" rows="3" class="form-control" name="intro" th:value="${user.intro}" placeholder="자기소개를 입력해주세요" ></textarea>
 </div>
       </div>
       <div class="modal-footer">

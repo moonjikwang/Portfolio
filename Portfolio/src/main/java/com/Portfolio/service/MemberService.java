@@ -161,6 +161,7 @@ public class MemberService {
 		member.setShowEmail(dto.getShowEmail());
 		member.setGitUrl(dto.getGitUrl());
 		member.setTel(dto.getTel());
+		member.setIntro(dto.getIntro());
 		member.setSkills(dto.getSkills());
 		kakaoRepository.save(member);
 		return entityToDto(member);
@@ -202,6 +203,7 @@ public class MemberService {
 		.showEmail(member.getShowEmail())
 		.gitUrl(member.getGitUrl())
 		.skills(member.getSkills())
+		.intro(member.getIntro())
 		.profileImg(member.getProfileImg())
 		.build();
 		return dto;
@@ -211,6 +213,7 @@ public class MemberService {
 		.email(dto.getEmail())
 		.name(dto.getName())
 		.tel(dto.getTel())
+		.intro(dto.getIntro())
 		.showEmail(dto.getShowEmail())
 		.gitUrl(dto.getGitUrl())
 		.skills(dto.getSkills())

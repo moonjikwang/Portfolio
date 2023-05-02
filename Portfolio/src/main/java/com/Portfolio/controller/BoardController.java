@@ -175,7 +175,7 @@ public class BoardController {
             // ckEditor 로 전송
             printWriter = res.getWriter();
             String callback = req.getParameter("CKEditorFuncNum");
-            String fileUrl = "http://tomcat.jikwang.net/Portfolio/image/" + uuid + "." + extension;
+            String fileUrl = "https://tomcat.jikwang.net/Portfolio/image/" + uuid + "." + extension;
 
             printWriter.println("<script type='text/javascript'>"
                     + "window.parent.CKEDITOR.tools.callFunction("
