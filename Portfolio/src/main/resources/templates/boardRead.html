@@ -74,13 +74,13 @@
 							</thead>
 							<tbody>
 								<tr style="height: 400px;">
-									<td id="content">[[${dto.content}]]</td>
+									<td id="content"></td>
 								</tr>
 							</tbody>
 						</table>
 						<div th:if="${session.userInfo != null}">
 							<div style="float: right;"
-								th:if="${session.userInfo.getEmail() == dto.name}">
+								th:if="${session.userInfo.getEmail() == dto.email}">
 								<a class="btn btn-primary mb-3"
 									th:href="@{/boardModify(bno=${dto.bno})}">수정하기</a> <a
 									class="btn btn-primary mb-3"
@@ -217,7 +217,7 @@
 							</thead>
 							<tbody>
 								<tr style="height: 300px;">
-									<td id="content">[[${dto.content}]]</td>
+									<td id="content2"></td>
 								</tr>
 							</tbody>
 						</table>
@@ -365,6 +365,9 @@
 <!-- 스크립트 시작-->
 <script th:inline="javascript">
 	$(document).ready(function() {
+		document.getElementById("content").innerHTML = /*[[${dto.content}]]*/"";
+		document.getElementById("content2").innerHTML = /*[[${dto.content}]]*/"";
+		
 		var emailval = /*[[${regiInfo}]]*/"";
 		if (emailval != null) {
 			$('#test').modal('show');
