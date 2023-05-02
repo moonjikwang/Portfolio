@@ -92,4 +92,9 @@ public class PortfolioController {
 		return fileUrl;
     }
 	
+	@GetMapping("Portfolio")
+	public void portfolio() {
+		
+	}
+	
 }
