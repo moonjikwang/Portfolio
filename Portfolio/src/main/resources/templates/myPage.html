@@ -137,8 +137,7 @@
 </svg> 자기 소개<br>
 - <span th:text="${user.intro == null?'자기소개를 입력해주세요.':user.intro}"></span>
 						</p>
-
-
+<a th:href="@{Portfolio(email=${session.userInfo.email})}" target="_blank"><button class="btn btn-primary">내 포트폴리오 방문</button></a>
 
 					</div>
 				</div>

@@ -21,9 +21,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.Portfolio.dto.MemberDTO;
 import com.Portfolio.dto.ProjectDTO;
-import com.Portfolio.repository.ProjectRepository;
 import com.Portfolio.service.ApiService;
+import com.Portfolio.service.MemberService;
 import com.Portfolio.service.ProjectService;
 
 @Controller
@@ -34,6 +35,8 @@ public class PortfolioController {
 	
 	@Autowired
 	ApiService apiService;
+	@Autowired
+	MemberService memberService;
 
 	@GetMapping("")
 	public String root() {
@@ -99,8 +102,12 @@ public class PortfolioController {
 		return fileUrl;
     }
 	@GetMapping("Portfolio")
-	public void portfolio() {
+	public void portfolio(String email,Model model) {
+		MemberDTO member = memberService.findByEmail(email);
+		List<ProjectDTO> projects = projectService.getList(email);
 		
+		model.addAttribute("member",member);
+		model.addAttribute("projects",projects);
 	}
 
 	

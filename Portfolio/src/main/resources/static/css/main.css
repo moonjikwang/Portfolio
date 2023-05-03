@@ -11,11 +11,13 @@
   padding: 10px;
   cursor: pointer;
 }
-
 @media (max-width: 767px) {
   .card-container {
     display: flex;
     flex-direction: column;
+  }
+    .name {
+    font-size: 70px!important;
   }
   .card {
     width: 100%;

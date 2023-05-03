@@ -188,7 +188,7 @@ https://tomcat.jikwang.net/Portfolio/oauth">
 </div>
       <div class="mb-3">
   <label for="intro" class="form-label">자기 소개</label>
-  <textarea th:if="${user != null}" cols="" rows="3" class="form-control" name="intro" th:value="${user.intro}" placeholder="자기소개를 입력해주세요" ></textarea>
+  <textarea th:if="${user != null}" cols="" rows="3" class="form-control" name="intro" placeholder="자기소개를 입력해주세요" >[[${user.intro}]]</textarea>
 </div>
       </div>
       <div class="modal-footer">
