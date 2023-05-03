@@ -4,7 +4,16 @@ import java.io.Serializable;
 
 import com.Portfolio.entity.Member;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 //세션 정보 저장 DTO
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserSessionDTO implements Serializable{
 
 	private String email;
