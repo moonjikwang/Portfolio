@@ -168,27 +168,27 @@ https://tomcat.jikwang.net/Portfolio/oauth">
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <form action="introEdit" method="POST">
-      <input th:if="${session.userInfo !=null}" type="hidden" th:value="${session.userInfo.email}" name="email">
+      <input th:if="${session.userInfo !=null}" type="hidden" autocomplete="off" th:value="${session.userInfo.email}" name="email">
       <div class="modal-body">
       <div class="mb-3">
   <label for="tel" class="form-label">연락처</label>
-  <input th:if="${user != null}" type="text" class="form-control" name="tel" th:value="${user.tel}" placeholder="연락처를 입력해주세요." />
+  <input th:if="${user != null}" type="text" class="form-control" autocomplete="off" name="tel" th:value="${user.tel}" placeholder="연락처를 입력해주세요." />
 </div>
       <div class="mb-3">
   <label for="showEmail" class="form-label">이메일</label>
-  <input th:if="${user != null}" type="email" class="form-control" name="showEmail" th:value="${user.showEmail}" placeholder="example@naver.com" />
+  <input th:if="${user != null}" type="email" class="form-control" autocomplete="off" name="showEmail" th:value="${user.showEmail}" placeholder="example@naver.com" />
 </div>
       <div class="mb-3">
   <label for="gitUrl" class="form-label">Github 링크</label>
-  <input th:if="${user != null}" type="text" class="form-control" name="gitUrl" th:value="${user.gitUrl}" placeholder="https://github.com/example" />
+  <input th:if="${user != null}" type="text" class="form-control" autocomplete="off" name="gitUrl" th:value="${user.gitUrl}" placeholder="https://github.com/example" />
 </div>
       <div class="mb-3">
   <label for="skills" class="form-label">핵심 스킬</label>
-  <input th:if="${user != null}" type="text" class="form-control" name="skills" th:value="${user.skills}" placeholder="Java,JSP,Spring Boot 쉼표로 구분해서 작성" />
+  <input th:if="${user != null}" type="text" class="form-control" autocomplete="off" name="skills" th:value="${user.skills}" placeholder="Java,JSP,Spring Boot 쉼표로 구분해서 작성" />
 </div>
       <div class="mb-3">
   <label for="intro" class="form-label">자기 소개</label>
-  <textarea th:if="${user != null}" cols="" rows="3" class="form-control" name="intro" placeholder="자기소개를 입력해주세요" >[[${user.intro}]]</textarea>
+  <textarea th:if="${user != null}" cols="" rows="3" class="form-control" autocomplete="off" name="intro" placeholder="자기소개를 입력해주세요" >[[${user.intro}]]</textarea>
 </div>
       </div>
       <div class="modal-footer">
