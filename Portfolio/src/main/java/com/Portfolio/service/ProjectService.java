@@ -38,7 +38,7 @@ public class ProjectService {
 		return result != null;
 	}
 	
-	private Project dtoToEntity(ProjectDTO dto) {
+	protected Project dtoToEntity(ProjectDTO dto) {
 		return Project.builder()
 				.title(dto.getTitle())
 				.date(dto.getDate())
@@ -51,7 +51,7 @@ public class ProjectService {
 				.writer(Member.builder().email(dto.getEmail()).build())
 				.build();
 	}
-	private ProjectDTO entityToDTO(Project entity) {
+	protected ProjectDTO entityToDTO(Project entity) {
 		return ProjectDTO.builder()
 				.title(entity.getTitle())
 				.date(entity.getDate())

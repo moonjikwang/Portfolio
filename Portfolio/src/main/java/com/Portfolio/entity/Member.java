@@ -29,5 +29,6 @@ public class Member extends BaseEntity{
 	private String gitUrl;
 	private String skills;
 	private String intro;
+	private boolean state;
 	
 }
