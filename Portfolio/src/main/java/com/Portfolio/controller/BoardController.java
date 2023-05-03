@@ -202,5 +202,10 @@ public class BoardController {
             } catch(IOException e) { e.printStackTrace(); }
         }
     }
+	
+	@GetMapping("/feedbackmodal")
+	public String feedback() {
+		return "fragments/feedbackmodal";
+	}
 
 }
