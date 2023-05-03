@@ -57,8 +57,8 @@ if(isNotMember){
 				<form action="boardModify" method="post">
 					<input type="hidden" name="bno" th:value="${dto.bno}"> 
 					<input
-						th:if="${session.userInfo != null}" type="hidden" name="nickName"
-						th:value="${session.userInfo.getNickName()}"> 
+						th:if="${session.userInfo != null}" type="hidden" name="name"
+						th:value="${session.userInfo.getName()}"> 
 					<input
 						type="hidden" name="writer"
 						th:value="${session.userInfo.getEmail}"> 
