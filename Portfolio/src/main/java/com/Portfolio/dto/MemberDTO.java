@@ -44,6 +44,7 @@ public class MemberDTO {
 	private String skills;
 	private String intro;
 	private LocalDateTime regDate,modDate;
+	private String token;
 	
 
 }
