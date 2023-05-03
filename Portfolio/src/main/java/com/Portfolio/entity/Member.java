@@ -24,6 +24,7 @@ public class Member extends BaseEntity{
 	private String showEmail; // 포트폴리오 노출용 이메일 카카오 이메일수집제한으로인해 별도생성
 	private String name;
 	private String password;
+	private String nickName;
 	private String profileImg;
 	private String tel;
 	private String gitUrl;
