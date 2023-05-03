@@ -12,7 +12,7 @@ public class UserSessionDTO implements Serializable{
 	private String name;
 	private String nickName;
 	
-	//entity->dto
+	//entity-> DTO
 	public UserSessionDTO(Member member) {
 		this.email = member.getEmail();
 		this.password = member.getPassword();

@@ -7,14 +7,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import com.Portfolio.entity.Member;
 
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
 public class CustomUserDetails implements UserDetails {
 
-	public Member member;
+	private final Member member;
 	
-	public CustomUserDetails(Member member) {
-		
-	}
-
 	/* 멤버 권한 목록 */
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -31,6 +30,7 @@ public class CustomUserDetails implements UserDetails {
 		return member.getName();
 	}
 
+	
 	/* 계정 만료 여부
      * true : 만료 안됨 / false : 만료
      */
@@ -40,7 +40,7 @@ public class CustomUserDetails implements UserDetails {
 	}
 
 	/* 계정 잠김 여부
-     *  true : 잠기지 않음 / false : 잠김
+     * true : 잠기지 않음 / false : 잠김
      */
 	@Override
 	public boolean isAccountNonLocked() {
@@ -48,7 +48,7 @@ public class CustomUserDetails implements UserDetails {
 	}
 
 	/* 비밀번호 만료 여부
-     *  true : 만료 안됨 / false : 만료
+     * true : 만료 안됨 / false : 만료
      */
 	@Override
 	public boolean isCredentialsNonExpired() {
@@ -56,7 +56,7 @@ public class CustomUserDetails implements UserDetails {
 	}
 
 	/* 사용자 활성화 여부
-     *  true : 만료 안됨 / false : 만료
+     * true : 만료 안됨 / false : 만료
      */
 	@Override
 	public boolean isEnabled() {
