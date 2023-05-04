@@ -59,12 +59,6 @@ public class KakaoController {
 		return "redirect:index";
 
 	}
-	@GetMapping("sessionOut")
-	public String sessionOut(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-		session.invalidate();
-		return "redirect:index";
-	}
 	
 	@GetMapping("myPage")
 	public String myPage(Model model,HttpServletRequest req, HttpServletResponse res) {

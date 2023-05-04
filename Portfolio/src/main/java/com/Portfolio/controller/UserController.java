@@ -42,8 +42,4 @@ public class UserController {
 		return "redirect:index";
 	}
 	
-	@GetMapping("myPage")
-	public void myPage() {
-		
-	}
 }

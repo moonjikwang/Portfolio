@@ -21,7 +21,7 @@ import lombok.RequiredArgsConstructor;
 public class UserService {
 
 	private final MemberRepository memberRepository;
-	private final BCryptPasswordEncoder encoder;
+	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 	private final HttpSession httpSession;
 
 	public Member dtoToEntity(MemberDTO dto) {
@@ -59,7 +59,7 @@ public class UserService {
 	
 	//회원가입
 	@Transactional
-	public Member register(MemberDTO dto) {
+	public void register(MemberDTO dto) {
 		//사용자 비밀번호 해쉬 암호화
 		dto.setPassword(encoder.encode(dto.getPassword()));
 		//사용자 이메일 중복체크
@@ -69,6 +69,7 @@ public class UserService {
 		}
 		//새로운 사용자 등록
 		Member entity = dtoToEntity(dto);
-	    return memberRepository.save(entity);
+		memberRepository.save(entity);
+		httpSession.setAttribute("userInfo", dto);
 	}
 }
