@@ -35,6 +35,7 @@ public class UserService {
 		return entity;
 	}
 	
+	//====================START=======================
 	//로그인
 	@Transactional
 	public Member login(MemberDTO dto) {
@@ -56,7 +57,9 @@ public class UserService {
 			throw new RuntimeException("해당 사용자가 존재하지 않습니다.");
 		}
 	}
+	//=====================END========================
 	
+	//====================START=======================
 	//회원가입
 	@Transactional
 	public void register(MemberDTO dto) {
@@ -72,4 +75,5 @@ public class UserService {
 		memberRepository.save(entity);
 		httpSession.setAttribute("userInfo", dto);
 	}
+	//=====================END========================
 }
