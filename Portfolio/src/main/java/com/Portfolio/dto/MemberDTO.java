@@ -42,6 +42,7 @@ public class MemberDTO {
 	private String gitUrl;
 	private String showEmail;
 	private String skills;
+	private boolean state;
 	private String intro;
 	private LocalDateTime regDate,modDate;
 	private String token;

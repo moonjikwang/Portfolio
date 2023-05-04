@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.Portfolio.dto.BoardDTO;
 import com.Portfolio.dto.PortfolioDTO;
 import com.Portfolio.dto.ProjectDTO;
 import com.Portfolio.entity.Member;
@@ -21,8 +25,8 @@ public class PortfolioService extends ProjectService{
 	@Autowired
 	ProjectRepository projectRepository;
 	
-	public List<PortfolioDTO> getList() {
-		List<Member> list = memberRepository.findByStateTrue();
+	public Page<PortfolioDTO> getList(Pageable pageable) {
+		Page<Member> list = memberRepository.findByStateTrue(pageable);
 		List<PortfolioDTO> portfolio = new ArrayList<>();
 		list.forEach(member->{
 			List<ProjectDTO> projectDTOs = new ArrayList<>();
@@ -34,6 +38,7 @@ public class PortfolioService extends ProjectService{
 									.projects(projectDTOs)
 									.email(member.getEmail())
 									.name(member.getName())
+									.viewCount(member.getViewCount())
 									.profileImg(member.getProfileImg())
 									.tel(member.getTel())
 									.gitUrl(member.getGitUrl())
@@ -45,6 +50,12 @@ public class PortfolioService extends ProjectService{
 									.build();
 			portfolio.add(dto);
 		});
-		return portfolio;
+		Page<PortfolioDTO> pageDto = new PageImpl<>(portfolio, pageable, list.getTotalElements());
+		return pageDto;
+	}
+	public void viewCount(String email) {
+		Member member = memberRepository.findByEmail(email).get();
+		member.setViewCount(member.getViewCount()+1);
+		memberRepository.save(member);
 	}
 }

@@ -184,6 +184,12 @@ public class MemberService {
 		}
 		
 	}
+	
+	public void setState(MemberDTO dto) {
+		Member member = kakaoRepository.findByEmail(dto.getEmail()).get();
+		member.setState(dto.isState());
+		kakaoRepository.save(member);
+	}
 
 	public List<MemberDTO> findAll() {
 		List<MemberDTO> result = new ArrayList<>();
@@ -201,6 +207,7 @@ public class MemberService {
 		.name(member.getName())
 		.tel(member.getTel())
 		.showEmail(member.getShowEmail())
+		.state(member.isState())
 		.gitUrl(member.getGitUrl())
 		.skills(member.getSkills())
 		.intro(member.getIntro())
@@ -214,6 +221,7 @@ public class MemberService {
 		.name(dto.getName())
 		.tel(dto.getTel())
 		.intro(dto.getIntro())
+		.state(dto.isState())
 		.showEmail(dto.getShowEmail())
 		.gitUrl(dto.getGitUrl())
 		.skills(dto.getSkills())

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.Portfolio.dto.MemberDTO;
+import com.Portfolio.service.MemberService;
 import com.Portfolio.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -20,6 +21,8 @@ public class UserController {
 
 	@Autowired
 	private final UserService userService; 
+	@Autowired
+	MemberService memberService;
 	
 	//회원가입
 	@PostMapping("register")
@@ -40,6 +43,12 @@ public class UserController {
 		HttpSession session = request.getSession();
 		session.invalidate();
 		return "redirect:index";
+	}
+	
+	@PostMapping("updateState")
+	public String stateForm(MemberDTO dto) {
+		memberService.setState(dto);
+		return "redirect:myPage";
 	}
 	
 }

@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,9 +26,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.Portfolio.dto.MemberDTO;
+import com.Portfolio.dto.PortfolioDTO;
 import com.Portfolio.dto.ProjectDTO;
 import com.Portfolio.service.ApiService;
 import com.Portfolio.service.MemberService;
+import com.Portfolio.service.PortfolioService;
 import com.Portfolio.service.ProjectService;
 
 @Controller
@@ -32,7 +38,8 @@ public class PortfolioController {
 	
 	@Autowired
 	ProjectService projectService;
-	
+	@Autowired
+	PortfolioService portfolioService;
 	@Autowired
 	ApiService apiService;
 	@Autowired
@@ -43,7 +50,9 @@ public class PortfolioController {
 		return "redirect:index";
 	}
 	@GetMapping("index")
-	public void index() {
+	public void index(Model model,Pageable pageable) {
+		Page<PortfolioDTO> portfolios = portfolioService.getList(PageRequest.of(pageable.getPageNumber(), 8, Sort.by("regDate").descending()));
+		model.addAttribute("portfolios",portfolios);
 	}
 	
 	@PostMapping("addProject")
@@ -105,7 +114,7 @@ public class PortfolioController {
 	public void portfolio(String email,Model model) {
 		MemberDTO member = memberService.findByEmail(email);
 		List<ProjectDTO> projects = projectService.getList(email);
-		
+		portfolioService.viewCount(email);
 		model.addAttribute("member",member);
 		model.addAttribute("projects",projects);
 	}

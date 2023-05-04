@@ -83,29 +83,29 @@ if ('serviceWorker' in navigator) {
 
 		<main class="container">
 			<div
-				class="row row-cols-1 row-cols-lg-3 row-cols-xl-4 mb-3 text-center"
+				class="col-12 row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 mb-3 text-center"
 				style="padding: 0px;" id="portFolioList">
-				<div class="col skillDiv" th:each="num : ${#numbers.sequence(0, 7)}">
+				<div class="col" th:each="portfolio : ${portfolios}">
 					<th:block>
-						<a href="#" style="text-decoration: none; color: #adb5bd;">
+						<a th:href="@{Portfolio(email=${portfolio.email})}" target="_blank" style="text-decoration: none; color: #adb5bd;">
 							<div class="card mb-4 shadow-sm"
-								style="margin-left: 5px; margin-right: 5px; background-color: #1f1f1f;">
-								<img src="img/cardb.jpg" class="card-img-top" alt="...">
+								style="margin-left: 5px; margin-right: 5px; background-color: #1f1f1f;">	
+    <img th:src="${portfolio.projects != null and portfolio.projects.size() > 0 and portfolio.projects[0].imgUrl != null ? portfolio.projects[0].imgUrl : 'img/cardb.jpg'}" class="card-img-top" height="220px" alt="..."/>
+								
 								<div class="card-body">
 									<small class="text-muted fw-light"
-										style="color: #FFFFFF !important;">작성일 | 2023.04.26</small>
+										style="color: #FFFFFF !important;">작성일 | [[${#temporals.format(portfolio.regDate,'yyyy-MM-dd HH:mm')}]]</small>
 									<ul class="list-unstyled mt-3 mb-4">
-										<span class="textLine h6"><b style="color: #FFFFFF;">포트폴리오
-												제목</b></span>
+										<span class="textLine h6"><b style="color: #FFFFFF;">[[${portfolio.name}]]님의 포트폴리오</b></span>
 										<br>
 										<span class="badge text-bg-light"
 											style="color: dimgrey !important;">🗂️백엔드 개발자</span>
 
 									</ul>
 									<hr>
-									<img src="img/green.png" alt="" width="25" height="25"
+									<img th:src="${portfolio.profileImg}" alt="" width="25" height="25"
 										class="rounded-circle me-2"> <span><b
-										style="color: #FFFFFF;">작성자</b></span> <span style="float: right">
+										style="color: #FFFFFF;">[[${portfolio.name}]]</b></span> <span style="float: right">
 										<b></b> <svg xmlns="http://www.w3.org/2000/svg" width="16"
 											height="16" fill="currentColor" class="bi bi-eye"
 											viewBox="0 0 16 16">
@@ -113,7 +113,7 @@ if ('serviceWorker' in navigator) {
 												d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z" />
   <path
 												d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" />
-</svg><small> 216 </small> <svg xmlns="http://www.w3.org/2000/svg" width="16"
+</svg><small> [[${portfolio.viewCount}]] </small> <svg xmlns="http://www.w3.org/2000/svg" width="16"
 											height="16" fill="currentColor" class="bi bi-chat"
 											viewBox="0 0 16 16">
   <path

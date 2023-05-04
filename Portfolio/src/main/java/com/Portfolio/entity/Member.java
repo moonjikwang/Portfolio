@@ -30,6 +30,7 @@ public class Member extends BaseEntity{
 	private String gitUrl;
 	private String skills;
 	private String intro;
+	private int viewCount;
 	private boolean state;
 	
 }
