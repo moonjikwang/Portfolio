@@ -1,6 +1,8 @@
 package com.Portfolio.dto;
 
 
+import javax.persistence.Column;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +18,7 @@ public class ProjectDTO {
 	private String date;
 	private String introduce;
 	private String skill;
+	@Column(length = 500)
 	private String description;
 	private String webLink;
 	private String gitLink;

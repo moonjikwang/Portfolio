@@ -24,11 +24,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.Portfolio.dto.FeedbackDTO;
 import com.Portfolio.dto.MemberDTO;
 import com.Portfolio.dto.PortfolioDTO;
 import com.Portfolio.dto.ProjectDTO;
+import com.Portfolio.repository.FeedbackRepository;
 import com.Portfolio.service.ApiService;
+import com.Portfolio.service.FeedbackService;
 import com.Portfolio.service.MemberService;
 import com.Portfolio.service.PortfolioService;
 import com.Portfolio.service.ProjectService;
@@ -44,6 +48,8 @@ public class PortfolioController {
 	ApiService apiService;
 	@Autowired
 	MemberService memberService;
+	@Autowired
+	FeedbackService feedbackService;
 
 	@GetMapping("")
 	public String root() {
@@ -117,6 +123,29 @@ public class PortfolioController {
 		portfolioService.viewCount(email);
 		model.addAttribute("member",member);
 		model.addAttribute("projects",projects);
+	}
+	
+	@GetMapping("feedback")
+	public void feedback(String email,Model model) {
+		MemberDTO member = memberService.findByEmail(email);
+		List<ProjectDTO> projects = projectService.getList(email);
+		List<FeedbackDTO> feedbacks = feedbackService.getList(email);
+		portfolioService.viewCount(email);
+		model.addAttribute("feedbacks",feedbacks);
+		model.addAttribute("member",member);
+		model.addAttribute("projects",projects);
+	}
+	@PostMapping("feedbackWrite")
+	public String feedbackWrite(FeedbackDTO dto,RedirectAttributes redirectAttributes) {
+		feedbackService.writeFeedback(dto);
+		redirectAttributes.addAttribute("email",dto.getEmail());
+		return "redirect:feedback";
+	}
+	@GetMapping("removeFeedback")
+	public String deleteFeedback(Long no,String email,RedirectAttributes redirectAttributes) {
+		feedbackService.removeFeedback(no);
+		redirectAttributes.addAttribute("email",email);
+		return "redirect:feedback";
 	}
 
 	

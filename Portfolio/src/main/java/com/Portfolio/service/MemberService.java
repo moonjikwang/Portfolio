@@ -161,6 +161,7 @@ public class MemberService {
 		member.setShowEmail(dto.getShowEmail());
 		member.setGitUrl(dto.getGitUrl());
 		member.setTel(dto.getTel());
+		member.setName(dto.getName());
 		member.setIntro(dto.getIntro());
 		member.setSkills(dto.getSkills());
 		kakaoRepository.save(member);

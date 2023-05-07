@@ -18,23 +18,42 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UserService{
 
 	private final MemberRepository memberRepository;
 	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 	private final HttpSession httpSession;
 
-	public Member dtoToEntity(MemberDTO dto) {
+	protected MemberDTO entityToDto(Member member) {
+		MemberDTO dto = MemberDTO.builder()
+		.email(member.getEmail())
+		.password(member.getPassword())
+		.name(member.getName())
+		.tel(member.getTel())
+		.showEmail(member.getShowEmail())
+		.state(member.isState())
+		.gitUrl(member.getGitUrl())
+		.skills(member.getSkills())
+		.intro(member.getIntro())
+		.profileImg(member.getProfileImg())
+		.build();
+		return dto;
+	}
+	protected Member dtoToEntity(MemberDTO dto) {
 		Member entity = Member.builder()
-				.email(dto.getEmail())
-				.password(dto.getPassword())
-				.name(dto.getName())
-				.nickName(dto.getNickName())
-				.profileImg(dto.getProfileImg())
-				.build();
+		.email(dto.getEmail())
+		.name(dto.getName())
+		.tel(dto.getTel())
+		.intro(dto.getIntro())
+		.state(dto.isState())
+		.showEmail(dto.getShowEmail())
+		.gitUrl(dto.getGitUrl())
+		.skills(dto.getSkills())
+		.password(dto.getPassword())
+		.profileImg(dto.getProfileImg())
+		.build();
 		return entity;
 	}
-	
 	//====================START=======================
 	//로그인
 	@Transactional
@@ -46,7 +65,7 @@ public class UserService {
 			//이메일이 존재할 경우 -> 세션에 로그인 유저 정보 저장
 			Member member = optionalMember.get();
 			if (encoder.matches(dto.getPassword(),member.getPassword())) {
-				httpSession.setAttribute("userInfo", member);
+				httpSession.setAttribute("userInfo", entityToDto(member));
 			} else {
 				throw new RuntimeException("비밀번호가 일치하지 않습니다.");
 			}
@@ -62,18 +81,19 @@ public class UserService {
 	//====================START=======================
 	//회원가입
 	@Transactional
-	public void register(MemberDTO dto) {
+	public MemberDTO register(MemberDTO dto) {
 		//사용자 비밀번호 해쉬 암호화
 		dto.setPassword(encoder.encode(dto.getPassword()));
 		//사용자 이메일 중복체크
 		Optional<Member> optionalMember = memberRepository.findByEmail(dto.getEmail());
 		if(optionalMember.isPresent()) {
-			throw new RuntimeException("이미 사용중인 이메일입니다.");
+			return null;
 		}
 		//새로운 사용자 등록
 		Member entity = dtoToEntity(dto);
 		memberRepository.save(entity);
 		httpSession.setAttribute("userInfo", dto);
+		return dto;
 	}
 	//=====================END========================
 }

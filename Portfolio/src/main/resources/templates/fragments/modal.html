@@ -142,36 +142,7 @@ https://tomcat.jikwang.net/Portfolio/oauth">
 		</div>
 	</div>
 
-	<div class="modal fade" id="test" tabindex="-1"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" style="margin-top: 20%;">
-			<div class="modal-content">
-				<div class="modal-body">
-					<th:block>
-						<div style="text-align: center;">
-							<fieldset id="page1">
-								<h3>안녕하세요 처음오셨군요!</h3>
-								<h5>닉네임을 설정해주세요.</h5>
-
-									<form action="register" method="POST">
-										<div class="d-grid gap-3 col-6 mx-auto">
-											<div class="input-group input-group-lg">
-												<span class="input-group-text" id="inputGroup-sizing-lg">@</span>
-												<input type="text" class="form-control" name="nickName"
-													aria-label="Sizing example input" disabled="disabled"
-													aria-describedby="inputGroup-sizing-lg">
-											</div>
-											<button type="submit">회원등록</button>
-										</div>
-									</form>
-							</fieldset>
-
-						</div>
-					</th:block>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 
 <div class="modal fade" id="introModal" tabindex="-1" aria-labelledby="introModalLabel" aria-hidden="true">
   <div class="modal-dialog" style="margin-top: 15%;">
@@ -183,6 +154,10 @@ https://tomcat.jikwang.net/Portfolio/oauth">
       <form action="introEdit" method="POST">
       <input th:if="${session.userInfo !=null}" type="hidden" autocomplete="off" th:value="${session.userInfo.email}" name="email">
       <div class="modal-body">
+            <div class="mb-3">
+  <label for="tel" class="form-label">이름</label>
+  <input th:if="${user != null}" type="text" class="form-control" autocomplete="off" name="name" th:value="${user.name}" placeholder="이름을 입력해주세요." />
+</div>
       <div class="mb-3">
   <label for="tel" class="form-label">연락처</label>
   <input th:if="${user != null}" type="text" class="form-control" autocomplete="off" name="tel" th:value="${user.tel}" placeholder="연락처를 입력해주세요." />

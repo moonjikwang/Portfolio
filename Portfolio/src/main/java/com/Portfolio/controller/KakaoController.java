@@ -64,7 +64,6 @@ public class KakaoController {
 	public String myPage(Model model,HttpServletRequest req, HttpServletResponse res) {
 		HttpSession session = req.getSession();
 		MemberDTO dto = (MemberDTO) session.getAttribute("userInfo");
-	 	MemberDTO member = kakaoLoginService.findByEmail(dto.getEmail());
 	 	if(dto == null || dto.getEmail() == null) {
 	        try {
 	            res.setContentType("text/html;charset=UTF-8");
@@ -76,6 +75,7 @@ public class KakaoController {
 	        }
 	        return null; // null을 반환하여 뷰 페이지를 반환하지 않습니다.
 	 	}else {
+	 		MemberDTO member = kakaoLoginService.findByEmail(dto.getEmail());
 	 		List<ProjectDTO> projectList = projectService.getList(dto.getEmail());
 	 		model.addAttribute("user",member);
 			model.addAttribute("projects", projectList);
