@@ -61,7 +61,7 @@ public class UserService{
 			if (optionalMember.isPresent()) {
 				Member member = optionalMember.get();
 				if (encoder.matches(dto.getPassword(), member.getPassword())) {
-					httpSession.setAttribute("userInfo", member);
+					httpSession.setAttribute("userInfo", entityToDto(member));
 				} else {
 					httpSession.setAttribute("loginFailEmail", dto.getEmail());
 					return null;
@@ -90,7 +90,7 @@ public class UserService{
 		//새로운 사용자 등록
 		Member entity = dtoToEntity(dto);
 		memberRepository.save(entity);
-		httpSession.setAttribute("userInfo", dto);
+		httpSession.setAttribute("userInfo", entityToDto(entity));
 		return dto;
 	}
 	//=====================END========================
