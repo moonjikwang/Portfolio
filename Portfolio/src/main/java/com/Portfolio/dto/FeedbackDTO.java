@@ -19,6 +19,7 @@ public class FeedbackDTO {
 	private Long no;
 	private String email;
 	private String content;	 //댓글내용
-	private String replyer;  //댓글작성자
+	private String replyerEmail;  //댓글작성자
+	private String replyerName;
 	private LocalDateTime regDate,modDate;
 }

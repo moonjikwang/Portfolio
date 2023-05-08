@@ -41,7 +41,8 @@ public class FeedbackService {
 		return FeedbackDTO.builder()
 				.no(entity.getNo())
 				.email(entity.getWriter().getEmail())
-				.replyer(entity.getReplyer())
+				.replyerEmail(entity.getReplyerEmail())
+				.replyerName(entity.getReplyerName())
 				.content(entity.getContent())
 				.regDate(entity.getRegDate())
 				.modDate(entity.getModDate())
@@ -52,7 +53,8 @@ public class FeedbackService {
 		return Feedback.builder()
 				.writer(Member.builder().email(dto.getEmail()).build())
 				.content(dto.getContent())
-				.replyer(dto.getReplyer())
+				.replyerEmail(dto.getReplyerEmail())
+				.replyerName(dto.getReplyerName())
 				.build();
 	}
 }

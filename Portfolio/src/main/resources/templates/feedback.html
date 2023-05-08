@@ -53,71 +53,76 @@
 			</div>
 			<div class="row">
 				<div class="col-md-6">
-					<img alt="" th:src="${projects != null and projects.size() > 0 and projects[0].imgUrl != null ? projects[0].imgUrl : 'img/cardb.jpg'}"
+					<img alt=""
+						th:src="${projects != null and projects.size() > 0 and projects[0].imgUrl != null ? projects[0].imgUrl : 'img/cardb.jpg'}"
 						width="100%"> <a class="btn btn-primary mt-1 col-12 mb-2"
-						th:href="@{Portfolio(email=${member.email})}" target="_blank">포트폴리오 바로가기</a>
+						th:href="@{Portfolio(email=${member.email})}" target="_blank">포트폴리오
+						바로가기</a>
 				</div>
 				<div class="col-md-6">
 					<h3>
 						<img id="modalProfileImg" src="img/green.png" alt="" width="35"
-							height="35" class="rounded-circle me-2"> <span
-							>[[${member.name}]]</span>
+							height="35" class="rounded-circle me-2"> <span>[[${member.name}]]</span>
 					</h3>
 					<h5>
 						<span>[[${member.intro}]]</span>
 					</h5>
-						
+
 				</div>
 			</div>
 			<hr>
-			<div class=""
-				style="border-top: 0px;">
-										<span>피드백 <b> [[${feedbacks.size}]] </b>건</span>
-	<!-- 댓글입력폼 시작-->	<form action="feedbackWrite" method="POST">
-							<input type="hidden" name="email" th:value="${member.email}"><input
-								th:if="${session.userInfo != null}" type="hidden" name="replyer"
-								th:value="${session.userInfo.email}">
-							<div class="mb-3">
-								<label for="textarea" class="form-label">피드백 쓰기</label>
-								<textarea th:if="${session.userInfo == null}"
-									class="form-control" id="textarea" disabled="disabled"
-									placeholder="로그인 후 댓글작성 가능합니다." rows="3"></textarea>
-								<textarea th:if="${session.userInfo != null}" name="content"
-									class="form-control" id="textarea" rows="3" autocomplete="off"></textarea>
+			<div class="" style="border-top: 0px;">
+				<span>피드백 <b> [[${feedbacks.size}]] </b>건
+				</span>
+				<!-- 댓글입력폼 시작-->
+				<form action="feedbackWrite" method="POST">
+					<input type="hidden" name="email" th:value="${member.email}">
+					<input th:if="${session.userInfo != null}" type="hidden"
+						name="replyerEmail" th:value="${session.userInfo.email}"> <input
+						th:if="${session.userInfo != null}" type="hidden" name="replyerName"
+						th:value="${session.userInfo.name}">
+					<div class="mb-3">
+						<label for="textarea" class="form-label">피드백 쓰기</label>
+						<textarea th:if="${session.userInfo == null}" class="form-control"
+							id="textarea" disabled="disabled" placeholder="로그인 후 댓글작성 가능합니다."
+							rows="3"></textarea>
+						<textarea th:if="${session.userInfo != null}" name="content"
+							class="form-control" id="textarea" rows="3" autocomplete="off"></textarea>
 
-							</div>
-							<div>
-								<button th:if="${session.userInfo == null}" disabled="disabled"
-									type="submit" class="btn btn-success mb-3"
-									style="float: right;">등록</button>
-								<button th:if="${session.userInfo != null}" type="submit"
-									class="btn btn-success mb-3" style="float: right;">등록</button>
-							</div>
-	<!-- 댓글입력폼 끝-->	</form>
-	<!-- 댓글테이블 시작-->	<table class="table" style="margin-bottom: 50px;">
-							
-							<th:block th:each="feedback : ${feedbacks}">
-								<tr>
-									<td width="45px" class="text-center" style="border: none;"><img
-										src="img/green.png" width="45px" height="45px"
-										class="rounded-circle me-2"></td>
-									<td style="border: none;"><small><strong>[[${feedback.replyer}]]</strong></small>
-										<th:block th:if="${session.userInfo != null}">
-											<small style="float: right;"
-												th:if="${session.userInfo.getEmail() == feedback.replyer}">
-												<a th:href="@{removeFeedback(no=${feedback.no},email=${feedback.email})}"
-												>삭제</a>
-											</small>
-										</th:block> <br>
-									<small>[[${#temporals.format(feedback.regDate,
-											'yyyy-MM-dd HH:mm:ss')}]]</small><br></td>
-								</tr>
-								<tr style="border-bottom: solid 1px rgb(73, 80, 87);">
-									<td colspan="2" style="border: none; height: 4rem;">[[${feedback.content}]]</td>
-								</tr>
-							</th:block>
-							
-	<!-- 댓글테이블 끝-->		</table>
+					</div>
+					<div>
+						<button th:if="${session.userInfo == null}" disabled="disabled"
+							type="submit" class="btn btn-success mb-3" style="float: right;">등록</button>
+						<button th:if="${session.userInfo != null}" type="submit"
+							class="btn btn-success mb-3" style="float: right;">등록</button>
+					</div>
+					<!-- 댓글입력폼 끝-->
+				</form>
+				<!-- 댓글테이블 시작-->
+				<table class="table" style="margin-bottom: 50px;">
+
+					<th:block th:each="feedback : ${feedbacks}">
+						<tr>
+							<td width="45px" class="text-center" style="border: none;"><img
+								src="img/green.png" width="45px" height="45px"
+								class="rounded-circle me-2"></td>
+							<td style="border: none;"><small><strong>[[${feedback.replyerName}]]</strong></small>
+								<th:block th:if="${session.userInfo != null}">
+									<small style="float: right;"
+										th:if="${session.userInfo.getEmail() == feedback.replyerEmail}">
+										<a
+										th:href="@{removeFeedback(no=${feedback.no},email=${feedback.email})}">삭제</a>
+									</small>
+								</th:block> <br> <small>[[${#temporals.format(feedback.regDate,
+									'yyyy-MM-dd HH:mm:ss')}]]</small><br></td>
+						</tr>
+						<tr style="border-bottom: solid 1px rgb(73, 80, 87);">
+							<td colspan="2" style="border: none; height: 4rem;">[[${feedback.content}]]</td>
+						</tr>
+					</th:block>
+
+					<!-- 댓글테이블 끝-->
+				</table>
 			</div>
 
 

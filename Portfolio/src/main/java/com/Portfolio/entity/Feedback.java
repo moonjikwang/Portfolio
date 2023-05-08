@@ -23,7 +23,8 @@ public class Feedback extends BaseEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long no;		 //댓글넘버
 	private String content;	 //댓글내용
-	private String replyer;  //댓글작성자
+	private String replyerEmail;  //댓글작성자
+	private String replyerName;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Member writer;
