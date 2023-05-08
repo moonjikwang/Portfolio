@@ -57,8 +57,6 @@ public class UserService{
 	public Member login(MemberDTO dto, Model model) {
 		// 이메일 검증하여 기존회원여부 확인
 		Optional<Member> optionalMember = memberRepository.findByEmail(dto.getEmail());
-
-		try {
 			// 이메일이 존재할 경우 -> 세션에 로그인 유저 정보 저장
 			if (optionalMember.isPresent()) {
 				Member member = optionalMember.get();
@@ -66,18 +64,15 @@ public class UserService{
 					httpSession.setAttribute("userInfo", member);
 				} else {
 					httpSession.setAttribute("loginFailEmail", dto.getEmail());
-					throw new RuntimeException("비밀번호가 일치하지 않습니다.");
+					return null;
 				}
 				return member;// 로그인된 회원의 정보(아이디,이름 등. 보안상 비밀번호는 세션에 저장하지 않는다.)
 			} else {
 				// 해당 이메일이 존재하지 않을 경우 -> 세션에 로그인 실패 이메일 정보 저장
 				httpSession.setAttribute("loginFailEmail", dto.getEmail());
-				throw new RuntimeException("해당 사용자가 존재하지 않습니다.");
+				return null;
 			}
-		} catch (RuntimeException e) {
-			model.addAttribute("errorMessage", e.getMessage());
-			return null;
-		}
+		
 	}
 	//=====================END========================
 	

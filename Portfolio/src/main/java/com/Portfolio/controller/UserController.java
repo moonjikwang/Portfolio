@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.Portfolio.dto.MemberDTO;
+import com.Portfolio.entity.Member;
 import com.Portfolio.service.MemberService;
 import com.Portfolio.service.UserService;
 
@@ -59,19 +60,16 @@ public class UserController {
 	//로그인
 	@PostMapping("login")
 	public String login(MemberDTO dto, Model model, HttpServletResponse response) {
-		try {
-			userService.login(dto, model);
+		
+			Member member = userService.login(dto, model);
+			if(member != null) {
 			return "redirect:index";
-		} catch (RuntimeException e) {
-			model.addAttribute("loginFailEmail", dto.getEmail());
-			model.addAttribute("errorMessage", e.getMessage());
-
-			// 알림창을 띄우기 위한 JavaScript 코드
+			}else {
 			response.setContentType("text/html; charset=UTF-8");
 			PrintWriter res;
 			try {
 				res = response.getWriter();
-				res.println("<script type='text/javascript'> alert('비밀번호가 일치하지 않습니다.'); history.back(); </script>");
+				res.println("<script type='text/javascript'> alert('이메일 또는 비밀번호가 일치하지 않습니다.'); history.back(); </script>");
 				res.flush();
 			} catch (IOException ioException) {
 				ioException.printStackTrace();
