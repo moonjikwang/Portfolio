@@ -5,15 +5,11 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import org.springframework.ui.Model;
-
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
 import com.Portfolio.dto.MemberDTO;
 import com.Portfolio.entity.Member;
 import com.Portfolio.repository.MemberRepository;
-
 import lombok.RequiredArgsConstructor;
 
 
@@ -67,7 +63,7 @@ public class UserService{
 				//이메일이 존재할 경우 -> 세션에 로그인 유저 정보 저장
 				Member member = optionalMember.get();
 				if (encoder.matches(dto.getPassword(),member.getPassword())) {
-					httpSession.setAttribute("userInfo", member);
+					httpSession.setAttribute("userInfo", entityToDto(member));
 				} else {
 					httpSession.setAttribute("loginFailEmail", dto.getEmail());
 					throw new RuntimeException("비밀번호가 일치하지 않습니다.");
