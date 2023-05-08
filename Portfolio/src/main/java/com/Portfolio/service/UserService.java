@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
+import org.springframework.ui.Model;
 
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -57,23 +58,29 @@ public class UserService{
 	//====================START=======================
 	//로그인
 	@Transactional
-	public Member login(MemberDTO dto) {
+	public Member login(MemberDTO dto, Model model) {
 		//이메일 검증하여 기존회원여부 확인
 		Optional<Member> optionalMember = memberRepository.findByEmail(dto.getEmail());
 		
-		if (optionalMember.isPresent()) {
-			//이메일이 존재할 경우 -> 세션에 로그인 유저 정보 저장
-			Member member = optionalMember.get();
-			if (encoder.matches(dto.getPassword(),member.getPassword())) {
-				httpSession.setAttribute("userInfo", entityToDto(member));
-			} else {
-				throw new RuntimeException("비밀번호가 일치하지 않습니다.");
-			}
-			return optionalMember.get();
-		}else {
-			//해당 이메일이 존재하지 않을 경우 -> 세션에 로그인 실패 이메일 정보 저장
-			httpSession.setAttribute("loginFailEmail", dto.getEmail());
-			throw new RuntimeException("해당 사용자가 존재하지 않습니다.");
+		try {
+			if (optionalMember.isPresent()) {
+				//이메일이 존재할 경우 -> 세션에 로그인 유저 정보 저장
+				Member member = optionalMember.get();
+				if (encoder.matches(dto.getPassword(),member.getPassword())) {
+					httpSession.setAttribute("userInfo", member);
+				} else {
+					httpSession.setAttribute("loginFailEmail", dto.getEmail());
+					throw new RuntimeException("비밀번호가 일치하지 않습니다.");
+				}
+				return member;//로그인된 회원의 정보(아이디,이름 등. 보안상 비밀번호는 세션에 저장하지 않는다.)
+			}else {
+				//해당 이메일이 존재하지 않을 경우 -> 세션에 로그인 실패 이메일 정보 저장
+				httpSession.setAttribute("loginFailEmail", dto.getEmail());
+				throw new RuntimeException("해당 사용자가 존재하지 않습니다.");
+			}	
+		}catch (RuntimeException e) {
+			model.addAttribute("errorMessage", e.getMessage());
+			return null;
 		}
 	}
 	//=====================END========================

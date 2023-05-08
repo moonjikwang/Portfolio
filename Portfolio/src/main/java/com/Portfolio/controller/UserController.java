@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,9 +58,22 @@ public class UserController {
 	
 	//로그인
 	@PostMapping("login")
-	public String login(MemberDTO dto) {
-		userService.login(dto);
-		return "redirect:index";
+	public String login(MemberDTO dto, Model model, HttpServletResponse response) throws IOException {
+		try {
+			userService.login(dto, model);
+			return "redirect:index";
+		}catch (RuntimeException  e) {
+			model.addAttribute("loginFailEmail", dto.getEmail());
+			model.addAttribute("errorMessage", e.getMessage());
+			
+			response.setCharacterEncoding("UTF-8");
+	        response.setContentType("text/html; charset=UTF-8");
+	        PrintWriter out = response.getWriter();
+	        out.println("<script>alert('비밀번호가 일치하지 않습니다.');history.back();</script>");
+	        out.flush();
+	        
+			return "login";
+		}
 	}
 	
 	@GetMapping("sessionOut")
