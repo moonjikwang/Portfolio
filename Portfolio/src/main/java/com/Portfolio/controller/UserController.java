@@ -57,9 +57,15 @@ public class UserController {
 	
 	//로그인
 	@PostMapping("login")
-	public String login(MemberDTO dto) {
-		userService.login(dto);
-		return "redirect:index";
+	public String login(MemberDTO dto, Model model) {
+		try {
+			userService.login(dto, model);
+			return "redirect:index";
+		}catch (RuntimeException  e) {
+			model.addAttribute("loginFailEmail", dto.getEmail());
+			model.addAttribute("errorMessage", e.getMessage());
+			return "login";
+		}
 	}
 	
 	@GetMapping("sessionOut")
