@@ -71,7 +71,6 @@ public class UserController {
 	        PrintWriter out = response.getWriter();
 	        out.println("<script>alert('비밀번호가 일치하지 않습니다.');history.back();</script>");
 	        out.flush();
-	        
 			return "login";
 		}
 	}

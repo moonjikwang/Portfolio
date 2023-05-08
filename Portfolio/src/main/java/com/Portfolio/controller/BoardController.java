@@ -11,6 +11,7 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.Portfolio.dto.BoardDTO;
 import com.Portfolio.dto.CommentsDTO;
+import com.Portfolio.dto.MemberDTO;
 import com.Portfolio.service.BoardService;
 import com.Portfolio.service.CommentsService;
 
@@ -73,7 +75,7 @@ public class BoardController {
     }
 	
 	//게시글 상세보기
-	@GetMapping({"boardRead","boardModify"})
+	@GetMapping({"boardRead"})
 	public void  read(long bno, Pageable pageable, Model model) {
 		BoardDTO dto = boardService.findById(bno);
 		List<CommentsDTO> commentsDTOs = commentsService.getList(bno);
@@ -84,6 +86,38 @@ public class BoardController {
 		model.addAttribute("dto",dto);
 		model.addAttribute("comments",commentsDTOs);
 		model.addAttribute("boards", boards);
+	}
+	@GetMapping({"boardModify"})
+	public String  modify(long bno,HttpServletRequest req,HttpServletResponse res, Pageable pageable, Model model) {
+		HttpSession session = req.getSession();
+		PrintWriter printWriter = null;
+        res.setCharacterEncoding("utf-8");
+        res.setContentType("text/html;charset=utf-8");
+		MemberDTO member = (MemberDTO) session.getAttribute("userInfo");
+		BoardDTO dto = boardService.findById(bno);
+		if(member == null || dto.getEmail() != member.getEmail()) {
+			try {
+				printWriter = res.getWriter();
+	            printWriter.println("<script type='text/javascript'>"
+	                    + "alert('권한이 없습니다.');"
+	                    + "history.back();"
+	                    +"</script>");
+	            printWriter.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}finally {
+	                if(printWriter != null) { printWriter.close(); }
+	        }
+		}
+		List<CommentsDTO> commentsDTOs = commentsService.getList(bno);
+		boardService.viewCount(bno); //views ++
+		Page<BoardDTO> boards = boardService
+				.getList(PageRequest.of(pageable.getPageNumber(), 10, Sort.by("regDate").descending()));
+
+		model.addAttribute("dto",dto);
+		model.addAttribute("comments",commentsDTOs);
+		model.addAttribute("boards", boards);
+		return "boardModify";
 	}
 	
 	//새글쓰기 페이지로 매핌
@@ -112,8 +146,29 @@ public class BoardController {
 	
 	//게시글 삭제
 	@GetMapping("boardDelete")
-	public String boardDelete(long bno) {
+	public String boardDelete(long bno,HttpServletRequest req,HttpServletResponse res) {
+		HttpSession session = req.getSession();
+		PrintWriter printWriter = null;
+        res.setCharacterEncoding("utf-8");
+        res.setContentType("text/html;charset=utf-8");
+		MemberDTO member = (MemberDTO) session.getAttribute("userInfo");
+		BoardDTO dto = boardService.findById(bno);
+		if(member == null || dto.getEmail() != member.getEmail()) {
+			try {
+				printWriter = res.getWriter();
+	            printWriter.println("<script type='text/javascript'>"
+	                    + "alert('권한이 없습니다.');"
+	                    + "history.back();"
+	                    +"</script>");
+	            printWriter.flush();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}finally {
+	                if(printWriter != null) { printWriter.close(); }
+	        }
+		}else {
 		boardService.removeWithComments(bno);
+		}
 		return "redirect:board";
 	}
 	
