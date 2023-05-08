@@ -48,9 +48,8 @@ if ('serviceWorker' in navigator) {
 										<h5 class="display-3 mb-4 animated slideInDown"style="text-align: left; font-family: 'Noto Sans KR', sans-serif; white-space: nowrap;">
 											나만의 포트폴리오를<br>손쉽게 만들고<br>공유하세요🤩
 										</h5>
-										<a href="about" data-bs-toggle="modal"
-						data-bs-target="#feedBack" style="float: left;" class="btn btn-primary py-3 px-5 animated slideInDown">
-										Learn more
+										<a href="about" data-bs-toggle="modal" data-bs-target="#feedBack" style="float: left;" class="btn btn-primary py-3 px-5 animated slideInDown">
+											Learn more
 										</a>
 									</div>
 								</div>
@@ -115,9 +114,6 @@ if ('serviceWorker' in navigator) {
   			<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
 		</a>
 	</div>
-	
-
-	
 	<script th:inline="javascript">
 		$(document).ready(function() {
 			var emailval = /*[[${regiInfo}]]*/"";
@@ -142,21 +138,17 @@ if ('serviceWorker' in navigator) {
 	</script>
 	<script>
 	let deferredPrompt
-
 	window.addEventListener('beforeinstallprompt', event => {
 	    event.preventDefault()
 	    deferredPrompt = event
 	})
-
 	const installApp = () => {
 	    if (!deferredPrompt) {
 	        alert('이미 앱이 설치되어 있거나 앱을 설치할 수 없는 환경입니다')
 	        return
 	    }
-
 	    deferredPrompt.prompt()
 	}
-	
 	</script>
 	<script>
 		var multipleCardCarousel = document.querySelector("#carouselExample");

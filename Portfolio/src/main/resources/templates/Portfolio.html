@@ -1,40 +1,34 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org" data-bs-theme="dark">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>new Portfolio();</title>
-
-<link rel="icon" type="image/x-icon"
-	href="https://tomcat.jikwang.net/Portfolio/img/menu.png">
-<link rel="shortcut icon" type="image/x-icon"
-	href="https://tomcat.jikwang.net/Portfolio/img/menu.png">
-<script src="js/html2canvas.js"></script>
-<script src="js/jspdf.min.js"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Konkhmer+Sleokchher&family=Noto+Sans+KR:wght@300&display=swap"
-	rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.3.js"
-	integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-	crossorigin="anonymous"></script>
+<meta charset="utf-8">
 <meta name="theme-color" content="#060b12">
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-	crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="https://tomcat.jikwang.net/Portfolio/img/menu.png">
+<link rel="shortcut icon" type="image/x-icon" href="https://tomcat.jikwang.net/Portfolio/img/menu.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link
-	href="https://fonts.googleapis.com/css2?family=Righteous&family=Noto+Sans+KR:wght@500&family=Raleway:wght@900&family=Ubuntu:wght@500&display=swap"
-	rel="stylesheet">
-<link rel="stylesheet" as="style" crossorigin
-	href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
-
-
+<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Konkhmer+Sleokchher&family=Noto+Sans+KR:wght@300&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Righteous&family=Noto+Sans+KR:wght@500&family=Raleway:wght@900&family=Ubuntu:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.6/dist/web/static/pretendard.css" />
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
 <style>
+.name {
+	font-family: 'Do Hyeon', sans-serif; 
+	margin-top: -15%; 
+	position: relative;
+	background-image: linear-gradient(to top right, #ab6fd8, #ab6fd8, #f4cb6c, #c6e38c); 
+	-webkit-background-clip: text; 
+	-moz-background-clip: text; 
+	ackground-clip: text; 
+	color: transparent;
+	display: inline-block;
+}
+
 .active .page-link {
 	background-color: #3bb84d !important;
 	border-radius: 50%;
@@ -64,89 +58,65 @@
 <link rel="stylesheet" href="css/portfolio.css">
 </head>
 <body>
-	<div id="pdfDiv" class="py-3 col-md-10 mx-auto"
-		style="padding-left: 0px; max-width: 1024px; padding-right: 0px;">
+	<div id="pdfDiv" class="py-3 col-md-10 mx-auto" style="padding-left: 0px; max-width: 1024px; padding-right: 0px;">
 		<header class="mb-5">
 			<div>
-				<nav
-					class="nav nav-masthead justify-content-center float-md-end mt-3">
-					<a class="nav-link  py-1 px-0 text-light"
-						style="margin-right: 50px;" aria-current="page" href="#introduce">Introduce</a>
-					<a class="nav-link  py-1 px-0 text-light"
-						style="margin-right: 50px;" href="#projects">Projects</a> <a
-						class="nav-link  py-1 px-0 text-light" style="margin-right: 50px;"
-						href="#contact">Contact</a>
+				<nav class="nav nav-masthead justify-content-center float-md-end mt-3">
+					<a class="nav-link  py-1 px-0 text-light" style="margin-right: 50px;" aria-current="page" href="#introduce">
+						Introduce
+					</a>
+					<a class="nav-link  py-1 px-0 text-light" style="margin-right: 50px;" href="#projects">
+						Projects
+					</a> 
+					<a class="nav-link  py-1 px-0 text-light" style="margin-right: 50px;" href="#contact">
+						Contact
+					</a>
 				</nav>
 			</div>
 		</header>
 		<main class="px-3">
 			<section id="introduce" style="margin-top: 15%;">
 				<div class="clearfix">
-					<img src="img/background.png" width="55%"
-						style="display: inline; position: relative; float: right;">
+					<img src="img/background.png" width="55%" style="display: inline; position: relative; float: right;">
 				</div>
-				<h1 class="name"
-					style="font-family: 'Do Hyeon', sans-serif; font-size: 85px; margin-top: -15%; position: relative;
-	/* 그라데이션 적용 */ background-image: linear-gradient(to top right, #ab6fd8, #ab6fd8, #f4cb6c, #c6e38c); -webkit-background-clip: text; -moz-background-clip: text; background-clip: text; color: transparent;
-	/* 텍스트와 그라데이션 옆으로 정렬 */ display: inline-block;">
-					<span>Hello. I’m<br>[[${member.name}]]
-					</span>
+				<h1 class="name" style="font-size: 85px;">
+					<span>Hello. I’m<br>[[${member.name}]]</span>
 				</h1>
 				<p class="col-md-5" style="margin-bottom: 15%;">[[${member.intro}]]</p>
 			</section>
-
 			<section id="projects">
 				<h4 style="margin-bottom: 2rem;">
 					<b>Projects</b>
 				</h4>
-				<div th:each="project,iterStat : ${projects}"
-					class="row align-items-center" style="margin-bottom: 10rem;">
-					<div
-						th:classappend="${iterStat.index} % 2 == 0 ? '' : 'order-md-2'"
-						class="col-md-6">
-						<img th:src="${project.imgUrl}" width="100%" loading="lazy"
-							alt="MERN eCommerce" class="rounded">
+				<div th:each="project,iterStat : ${projects}" class="row align-items-center" style="margin-bottom: 10rem;">
+					<div th:classappend="${iterStat.index} % 2 == 0 ? '' : 'order-md-2'" class="col-md-6">
+						<img th:src="${project.imgUrl}" width="100%" loading="lazy" alt="MERN eCommerce" class="rounded">
 					</div>
-					<div
-						th:classappend="${iterStat.index} % 2 == 0 ? '' : 'order-md-1'"
-						class="col-md-1"></div>
+					<div th:classappend="${iterStat.index} % 2 == 0 ? '' : 'order-md-1'" class="col-md-1"></div>
 					<div id="description" class="col-md-5 d-flex align-items-center">
 						<div>
-							<h4
-								style="font-family: 'Do Hyeon', sans-serif; position: relative;
-	/* 그라데이션 적용 */ background-image: linear-gradient(to top right, #ab6fd8, #ab6fd8, #f4cb6c, #c6e38c); -webkit-background-clip: text; -moz-background-clip: text; background-clip: text; color: transparent;
-	/* 텍스트와 그라데이션 옆으로 정렬 */ display: inline-block;">
-								[[${project.title}]]</h4>
+							<h4 class="name">[[${project.title}]]</h4>
 							<p class="text-light">[[${project.introduce}]]</p>
 							<p>[[${project.description}]]</p>
-
 							<div class="pb-2 mb-2">
 								<th:block th:if="${project.skill != null}">
-									<th:block
-										th:each="skillName : ${#strings.arraySplit(project.skill, ',')}">
+									<th:block th:each="skillName : ${#strings.arraySplit(project.skill, ',')}">
 										<span class="badge text-bg-light">[[${skillName}]]</span>
 									</th:block>
-									<span th:if="${#strings.isEmpty(project.skill)}">핵심스킬을
-										설정해주세요.</span>
+									<span th:if="${#strings.isEmpty(project.skill)}">핵심스킬을 설정해주세요.</span>
 								</th:block>
 							</div>
-							<a
-								style="color: #a7e3b0; margin-right: 10px; text-decoration: none;"
-								th:href="${project.gitLink}" target="_blank"><svg
-									xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-									fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-  <path
-										d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-</svg> </a> <a style="color: #a7e3b0; text-decoration: none;"
-								th:href="${project.webLink}" target="_blank"><svg
-									xmlns="http://www.w3.org/2000/svg" width="20" height="20"
-									fill="currentColor" class="bi bi-box-arrow-up-right"
-									viewBox="0 0 16 16">
-  <path fill-rule="evenodd"
-										d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
-  <path fill-rule="evenodd"
-										d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
-</svg> </a>
+							<a style="color: #a7e3b0; margin-right: 10px; text-decoration: none;" th:href="${project.gitLink}" target="_blank">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+  									<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+								</svg> 
+							</a> 
+							<a style="color: #a7e3b0; text-decoration: none;" th:href="${project.webLink}" target="_blank">
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-box-arrow-up-right" viewBox="0 0 16 16">
+  									<path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z" />
+  									<path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z" />
+								</svg> 
+							</a>
 						</div>
 					</div>
 				</div>
@@ -156,15 +126,11 @@
 				<div class="container">
 					<div class="row">
 						<th:block th:if="${member.skills != null}">
-							<th:block
-								th:each="skillName : ${#strings.arraySplit(member.skills, ',')}">
+							<th:block th:each="skillName : ${#strings.arraySplit(member.skills, ',')}">
 								<div class="col-4 col-md-2">
-									<div class="flex flex-col items-center text-center mb-3"
-										tabindex="0" role="img" aria-label="Javascript">
-										<img
-											th:src="@{'img/icon/' + ${skillName.toLowerCase().replace(' ', '')} + '.png'}"
-											onerror="this.onerror=null; this.src='img/icon/coding.png'"
-											alt="" class="w-16 mb-1" width="64px" height="64px"> <br>[[${skillName}]]
+									<div class="flex flex-col items-center text-center mb-3" tabindex="0" role="img" aria-label="Javascript">
+										<img th:src="@{'img/icon/' + ${skillName.toLowerCase().replace(' ', '')} + '.png'}" onerror="this.onerror=null; this.src='img/icon/coding.png'" alt="" class="w-16 mb-1" width="64px" height="64px"> 
+										<br>[[${skillName}]]
 									</div>
 								</div>
 							</th:block>
@@ -186,101 +152,75 @@
 								<strong>[[${member.name}]]</strong>
 							</p>
 							<p class="font-weight-light">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-									fill="currentColor" class="bi bi-telephone-fill"
-									viewBox="0 0 16 16">
-  <path fill-rule="evenodd"
-										d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
-</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone-fill" viewBox="0 0 16 16">
+  									<path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+								</svg>
 								[[${member.tel}]]
 							</p>
-							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
-								fill="currentColor" class="bi bi-envelope-at-fill"
-								viewBox="0 0 16 16">
-  <path
-									d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z" />
-  <path
-									d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z" />
-</svg>
-							<a th:href="@{'mailto:'+${member.showEmail}}"
-								style="text-decoration: none; border-bottom: solid 2px white;"
-								class=" mt-3 d-inline-block border-secondary text-light">
-								[[${member.showEmail}]]</a>
+							<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-envelope-at-fill" viewBox="0 0 16 16">
+  								<path d="M2 2A2 2 0 0 0 .05 3.555L8 8.414l7.95-4.859A2 2 0 0 0 14 2H2Zm-2 9.8V4.698l5.803 3.546L0 11.801Zm6.761-2.97-6.57 4.026A2 2 0 0 0 2 14h6.256A4.493 4.493 0 0 1 8 12.5a4.49 4.49 0 0 1 1.606-3.446l-.367-.225L8 9.586l-1.239-.757ZM16 9.671V4.697l-5.803 3.546.338.208A4.482 4.482 0 0 1 12.5 8c1.414 0 2.675.652 3.5 1.671Z" />
+  								<path d="M15.834 12.244c0 1.168-.577 2.025-1.587 2.025-.503 0-1.002-.228-1.12-.648h-.043c-.118.416-.543.643-1.015.643-.77 0-1.259-.542-1.259-1.434v-.529c0-.844.481-1.4 1.26-1.4.585 0 .87.333.953.63h.03v-.568h.905v2.19c0 .272.18.42.411.42.315 0 .639-.415.639-1.39v-.118c0-1.277-.95-2.326-2.484-2.326h-.04c-1.582 0-2.64 1.067-2.64 2.724v.157c0 1.867 1.237 2.654 2.57 2.654h.045c.507 0 .935-.07 1.18-.18v.731c-.219.1-.643.175-1.237.175h-.044C10.438 16 9 14.82 9 12.646v-.214C9 10.36 10.421 9 12.485 9h.035c2.12 0 3.314 1.43 3.314 3.034v.21Zm-4.04.21v.227c0 .586.227.8.581.8.31 0 .564-.17.564-.743v-.367c0-.516-.275-.708-.572-.708-.346 0-.573.245-.573.791Z" />
+							</svg>
+							<a th:href="@{'mailto:'+${member.showEmail}}" style="text-decoration: none; border-bottom: solid 2px white;" class=" mt-3 d-inline-block border-secondary text-light">
+								[[${member.showEmail}]]
+							</a>
 						</div>
-
 						<div class="mt-3">
-							<a th:href="${member.gitUrl}" target="_blank"
-								style="text-decoration: none;">
+							<a th:href="${member.gitUrl}" target="_blank" style="text-decoration: none;">
 								<button type="button" class="btn btn-outline-light">
-									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-										fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
-  <path
-											d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
-</svg>
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+  										<path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
+									</svg>
 									Github
 								</button>
 							</a>
-
 							<button type="button" class="btn btn-outline-light">
-								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-									fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
-  <path
-										d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z" />
-</svg>
+								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-fill" viewBox="0 0 16 16">
+ 									<path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9.06 9.06 0 0 0 8 15z" />
+								</svg>
 								Kakao
 							</button>
-							
-									<button type="button" class="btn btn-outline-light">
+							<button type="button" class="btn btn-outline-light">
 								<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-richtext-fill" viewBox="0 0 16 16">
-  <path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM7 4.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V7.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V7s1.54-1.274 1.639-1.208zM5 9h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
-</svg>
+  									<path d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM7 4.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0zm-.861 1.542 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V7.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V7s1.54-1.274 1.639-1.208zM5 9h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1zm0 2h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1 0-1z"/>
+								</svg>
 								Blog
 							</button>
 						</div>
 					</div>
 				</div>
+			</section>
 		</main>
-
-
-
-
 		<footer class="pt-4 my-md-5 pt-md-5 border-top" style="padding: 0px;">
-
-			<div class="row"
-				style="padding: 0px; margin-right: 0px; padding-left: 10px;">
+			<div class="row" style="padding: 0px; margin-right: 0px; padding-left: 10px;">
 				<div class="col-10 col-md text-center">
-					<a href="https://tomcat.jikwang.net/Portfolio"
-						style="text-decoration: none; color: white;">new Portfolio<span
-						style="color: #a7e3b0;">(</span><span style="color: #77c783;">)</span><span
-						style="color: #3bb84d;">;</span> <small class=" mb-3 text-muted">&copy;
-							2023</small><br> <br></a>
+					<a href="https://tomcat.jikwang.net/Portfolio" style="text-decoration: none; color: white;">
+						new Portfolio
+						<span style="color: #a7e3b0;">(</span>
+						<span style="color: #77c783;">)</span>
+						<span style="color: #3bb84d;">;</span> 
+						<small class=" mb-3 text-muted">&copy; 2023</small><br> <br>
+					</a>
 				</div>
 			</div>
 		</footer>
-		<a onclick="javascript:info_print();" href="#" class="btn btn-light btn-lg"
-			style="color: black; border: none; position: fixed; bottom: 135px; right: 25px;"
-			role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-  <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z"/>
-</svg></a>
-		
-		<a onclick="copyUrl()" href="#" class="btn btn-light btn-lg"
-			style="color: black; border: none; position: fixed; bottom: 80px; right: 25px;"
-			role="button"><svg xmlns="http://www.w3.org/2000/svg" width="16"
-				height="16" fill="currentColor" class="bi bi-link"
-				viewBox="0 0 16 16">
-  <path
-					d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
-  <path
-					d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
-</svg></a> <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top"
-			style="color: black; border: none;" role="button"><svg
-				xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-				fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
-  <path fill-rule="evenodd"
-					d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
-				<svg></a>
+		<a onclick="javascript:info_print();" href="#" class="btn btn-light btn-lg" style="color: black; border: none; position: fixed; bottom: 135px; right: 25px;" role="button">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+  				<path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z"/>
+			</svg>
+		</a>
+		<a onclick="copyUrl()" href="#" class="btn btn-light btn-lg" style="color: black; border: none; position: fixed; bottom: 80px; right: 25px;" role="button">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link" viewBox="0 0 16 16">
+  				<path d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
+  				<path d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
+			</svg>
+		</a> 
+		<a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" style="color: black; border: none;" role="button">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+	  			<path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z" />
+			<svg>
+		</a>
 	</div>
-
 	<script>
 		function info_print() {
 			var initBody = document.body.innerHTML;
@@ -293,7 +233,6 @@
 			window.print();
 		}
 	</script>
-
 	<script>
 	//현재 url 변수로 가져오기
 	let nowUrl = window.location.href;
@@ -333,9 +272,6 @@
 			$('#loading').hide();
 		}, 1000);
 	</script>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
 </body>
 </html>
