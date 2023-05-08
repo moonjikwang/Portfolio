@@ -58,20 +58,25 @@ public class UserController {
 	
 	//로그인
 	@PostMapping("login")
-	public String login(MemberDTO dto, Model model, HttpServletResponse response) throws IOException {
+	public String login(MemberDTO dto, Model model, HttpServletResponse response) {
 		try {
 			userService.login(dto, model);
 			return "redirect:index";
-		}catch (RuntimeException  e) {
+		} catch (RuntimeException e) {
 			model.addAttribute("loginFailEmail", dto.getEmail());
 			model.addAttribute("errorMessage", e.getMessage());
-			
-			response.setCharacterEncoding("UTF-8");
-	        response.setContentType("text/html; charset=UTF-8");
-	        PrintWriter out = response.getWriter();
-	        out.println("<script>alert('비밀번호가 일치하지 않습니다.');history.back();</script>");
-	        out.flush();
-			return "login";
+
+			// 알림창을 띄우기 위한 JavaScript 코드
+			response.setContentType("text/html; charset=UTF-8");
+			PrintWriter res;
+			try {
+				res = response.getWriter();
+				res.println("<script type='text/javascript'> alert('비밀번호가 일치하지 않습니다.'); history.back(); </script>");
+				res.flush();
+			} catch (IOException ioException) {
+				ioException.printStackTrace();
+			}
+			return "redirect:index";
 		}
 	}
 	
