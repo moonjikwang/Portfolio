@@ -10,10 +10,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.Portfolio.dto.BoardDTO;
+import com.Portfolio.dto.FeedbackDTO;
 import com.Portfolio.dto.PortfolioDTO;
 import com.Portfolio.dto.ProjectDTO;
+import com.Portfolio.entity.Feedback;
 import com.Portfolio.entity.Member;
 import com.Portfolio.entity.Project;
+import com.Portfolio.repository.FeedbackRepository;
 import com.Portfolio.repository.MemberRepository;
 import com.Portfolio.repository.ProjectRepository;
 
@@ -24,6 +27,8 @@ public class PortfolioService extends ProjectService{
 	MemberRepository memberRepository;
 	@Autowired
 	ProjectRepository projectRepository;
+	@Autowired
+	FeedbackRepository feedbackRepository;
 	
 	public Page<PortfolioDTO> getList(Pageable pageable) {
 		Page<Member> list = memberRepository.findByStateTrue(pageable);
@@ -31,6 +36,7 @@ public class PortfolioService extends ProjectService{
 		list.forEach(member->{
 			List<ProjectDTO> projectDTOs = new ArrayList<>();
 			List<Project> projects = projectRepository.findByWriter_Email(member.getEmail());
+			List<Feedback> feedbacks = feedbackRepository.findByWriter(member);
 			projects.forEach(entities->{
 				projectDTOs.add(entityToDTO(entities));
 			});//project entity to DTO
@@ -39,6 +45,7 @@ public class PortfolioService extends ProjectService{
 									.email(member.getEmail())
 									.name(member.getName())
 									.viewCount(member.getViewCount())
+									.replyCount(feedbacks.size())
 									.profileImg(member.getProfileImg())
 									.tel(member.getTel())
 									.gitUrl(member.getGitUrl())

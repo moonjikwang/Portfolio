@@ -25,6 +25,7 @@ public class PortfolioDTO {
 	private String skills;
 	private String intro;
 	private int viewCount;
+	private int replyCount;
 	private List<ProjectDTO> projects;
 	private LocalDateTime regDate,modDate;
 }
